@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #F6F7BD;
+  display: grid;
+    grid-template-areas:
+        "header header header"
+        "blank canvas2 blank"
+        "footer footer footer";
+    grid-template-columns: 20% 60% 20%;
+}
+
+
+
+#canvas2 {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #F6F7BD;
+  background-size: auto;
+  opacity: 1;
+}
+
+#canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: url("massive water.png");
+  background-size: cover;
+}
+
+
+@font-face {
+  font-family: 'Comic Sans';
+  src: url('comicsans.ttf') format('truetype');
+}
+
+
+
+.logo {
+  display: block;
+  max-width: 25%;
+  height: auto;
+  margin: 0 auto;
+  position: fixed;
+  top: 25px;
+  left: 0;
+  right: 0;
+}
+
+
+.leftbutton {
+  display: block;
+  max-width: 50%;
+  height: auto;
+  width: 700px;
+  position: fixed;
+  margin-top: -25px;
+}

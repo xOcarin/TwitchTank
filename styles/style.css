@@ -1,0 +1,184 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-image: url("../assets/bg/massive water.png");
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 10vh;
+  width: 150vw;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: auto;
+  width: 100%;
+  height: 50px;
+  position: relative;
+}
+
+.logo {
+  max-width: 50%;
+  height: auto;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.buttons {
+  display: flex;
+}
+
+.leftbutton img,
+.rightbutton img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.leftbutton,
+.rightbutton {
+  position: absolute;
+  top: 0;
+  padding: 5px;
+  width: 320px;
+  height: 151px;
+}
+
+
+.leftbutton {
+  position: absolute;
+  left: 145px; /* assuming button width is 300px */
+  transform: translateX(-100%);
+  padding: 5px 10px;
+  font-size: 14px;
+  display: inline-block;
+}
+
+#login-button:hover{
+  transform: translateX(-70%);
+}
+
+.rightbutton {
+  position: absolute;
+  right: 135px;
+  transform: translateX(100%);
+  padding: 5px 10px;
+  font-size: 14px;
+  display: inline-block;
+}
+
+#signup-button:hover {
+  transform: translateX(70%);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+}
+
+
+@font-face {
+  font-family: 'Comic Sans';
+  src: url('../assets/fonts/comicsans.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Funky Font';
+  src: url('../assets/fonts/funkyfont.otf') format('opentype');
+}
+
+.login-container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; /* increase width to 600px */
+  padding: 40px; /* increase padding to 40px */
+  border-radius: 20px; /* increase border radius to 20px */
+  border: 5px solid black;
+  backdrop-filter: blur(15px);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Comic Sans', sans-serif;
+  text-fill-color: #319cc5;
+  flex-grow: 1;
+  width: 100%;
+  margin: 0;
+
+}
+
+
+.login-form label,
+.login-form input {
+  font-size: 50px !important; /* increase font size to 24px */
+}
+
+
+button[type="submit"] {
+  padding: 16px 24px; /* increase padding */
+  font-family: 'Comic Sans', sans-serif;
+  font-size: 50px; /* increase font size */
+}
+
+
+
+
+
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: url("../assets/bg/massive water.png");
+  background-size: cover;
+}
+
+
+label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  width: 100%;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
