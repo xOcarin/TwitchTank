@@ -3,61 +3,12 @@
 
 
   <head>
-    <title>Goongus Games!</title>
-    <link rel="icon" type="image/x-icon" href="assets/doifhead.ico">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="styles/style.css">
   </head>
   <body>
-    <div class="leftbutton-container" id="leftID">
-      <a class="leftbutton" id="login-button" onmouseenter="playWoodSound()" onclick="playSplashSound(); showLogin(); showBackButton(); return false;">
-        <img src="assets/logbutton.png" onclick="playSplashSound()">
-      </a>
-    </div>
-    <a class="leftbutton" id="backbutton" onmouseenter="playWoodSound()" onclick="playSplashSound(); goBack(); return false;" style="display:none;">
-      <img src="assets/backbutton.png" onclick="playSplashSound()" >
-    </a>
-    <div class="logo-container">
-      <center><img src="assets/logo.gif" class="logo"></center>
-    </div>
-    <div class="rightbutton-container" id="rightID">
-      <a class= "rightbutton" id="signup-button" onmouseenter="playWoodSound()" onclick="playSplashSound(); showSignup(); showBackButton(); return false;">
-        <img src="assets/createbutton.png" alt="Signup">
-      </a>
-    </div>
-    <div id="welcome-message">Welcome, <span id="username"></span>!</div>
 
-
-    <script src="scripts/cookies.js"></script>
-
-
-    <audio id="oarbuttons" src="assets/sounds/wood.mp3"></audio>
-    <audio id="splash" src="assets/sounds/splash1.mp3"></audio>
-    <script src="scripts/utils.js"></script>
     <canvas id="canvas"></canvas>
     <script src="scripts/script.js"></script>
 
-    <div class="login-container" id="login-container" style="display:none;">
-      <form class="login-form" action="../phphandlers/login.php" method="post">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password">
-        <button type="submit">Login</button>
-      </form>
-    </div>
-
-
-    <div class="login-container" id="signup-container" style="display:none;">
-      <form class="login-form" action="../phphandlers/signup.php" method="post">
-        <label for="username">Email</label>
-        <input type="text" id="email" name="email">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password">
-        <button type="submit">Signup</button>
-      </form>
-    </div>
   </body>
 </html>
