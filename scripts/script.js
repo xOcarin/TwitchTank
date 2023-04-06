@@ -37,11 +37,11 @@
 
         switch (this.type) {
           case "1":
-            this.imageL.src = 'assets/fish/fish_spritesheet.png';
-            this.imageR.src = 'assets/fish/fish_spritesheetR.png';
-            this.numFrames = 9;
-            this.frameWidth = 167;
-            this.frameHeight = 77;
+            this.imageL.src = 'assets/fish/testL.png';
+            this.imageR.src = 'assets/fish/testR.png';
+            this.numFrames = 26;
+            this.frameWidth = 200;
+            this.frameHeight = 200;
             break;
           case "2":
             this.imageL.src = 'assets/fish/Beepo_Bass_spritesheetL.png';
@@ -104,8 +104,8 @@
 
           // draw the text
           ctx.font = "15px 'Comic Sans'";
-          ctx.fillStyle = "black";
-          ctx.fillText(this.name, textX, this.y + this.height - 65);
+          ctx.fillStyle = "white";
+          ctx.fillText(this.name, textX, this.y);
 
           this.currentFrame = (this.currentFrame + 1) % this.numFrames;
           this.lastFrameTime = currentTime;
@@ -173,17 +173,14 @@
     const allFish = [];
 
     for (let i = 0; i < numFish; i++) {
-      allFish.push(new Fish(canvas.width/2, canvas.height/2, canvas.width * 0.0572916666666667, canvas.height * 0.0467592592592593, 1.25, ctx, presidents[i], (Math.floor(Math.random() * 6) + 1).toString()));
+      allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, ctx, presidents[i], "1"));
 }
     function updateFishDimensions() {
-      const widthRatio = canvas.width / 3840;
-      const heightRatio = canvas.height / 2160;
-      const ratio = Math.min(widthRatio, heightRatio);
+
 
 
       allFish.forEach((fish) => {
-        fish.width = fish.originalWidth * ratio;
-        fish.height = fish.originalHeight * ratio;
+
 
         let minx = 100;
         let maxx = canvas.width;
@@ -211,11 +208,11 @@
       allFish.forEach((fish) => {
         fish.move(canvas.width, canvas.height);
       });
-    }, 100);
+    }, 50);
 
     setInterval(() => {
       animateAllFish();
-    }, 100);
+    }, 20);
 
 window.addEventListener('resize', () => {
   width = window.innerWidth;
