@@ -44,11 +44,11 @@
             this.frameHeight = 200;
             break;
           case "2":
-            this.imageL.src = 'assets/fish/Beepo_Bass_spritesheetL.png';
-            this.imageR.src = 'assets/fish/Beepo_Bass_spritesheetR.png';
-            this.numFrames = 15;
+            this.imageL.src = 'assets/fish/yguyL.png';
+            this.imageR.src = 'assets/fish/yguyR.png';
+            this.numFrames = 26;
             this.frameWidth = 200;
-            this.frameHeight = 77;
+            this.frameHeight = 200;
             break;
           case "3":
             this.imageL.src = 'assets/fish/rainbow_Bass_spritesheetL.png';
@@ -173,7 +173,7 @@
     const allFish = [];
 
     for (let i = 0; i < numFish; i++) {
-      allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, ctx, presidents[i], "1"));
+      allFish.push(new Fish(canvas.width/2, canvas.height/2, 50, 50, .75, ctx, presidents[i], "2"));
 }
     function updateFishDimensions() {
 
