@@ -154,27 +154,25 @@
       }} //fish object
 
 
-      const canvas = document.getElementById("canvas");
-      const ctx = canvas.getContext("2d");
-      let width = window.innerWidth;
-      let height = window.innerHeight;
-      canvas.width = 3840;
-      canvas.height = 2160;
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    canvas.width = 3840;
+    canvas.height = 2160;
 
 
 
 
 
     const presidents = ["George Washington", "John Adams", "Thomas Jefferson", "James Madison", "James Monroe", "John Quincy Adams", "Andrew Jackson", "Martin Van Buren", "William Henry Harrison", "John Tyler"];
-
-
-
-    const numFish = 10;
-    const allFish = [];
+    let numFish = 5;
+    let allFish = [];
 
     for (let i = 0; i < numFish; i++) {
       allFish.push(new Fish(canvas.width/2, canvas.height/2, 50, 50, .75, ctx, presidents[i], "2"));
 }
+
     function updateFishDimensions() {
 
 
@@ -225,3 +223,19 @@ window.addEventListener('resize', () => {
 
 
 window.dispatchEvent(new Event('resize'));
+
+
+
+
+
+function incrementNumber() {
+  numFish++;
+  allFish.push(new Fish(canvas.width/4 + (Math.floor(Math.random() * 500) + 1), canvas.height/4 + (Math.floor(Math.random() * 500) + 1), 50, 50, .75, ctx, 'new', "2"));
+  console.log(numFish);
+}
+
+function decrementNumber() {
+  allFish.splice(numFish, 1)
+  numFish--;
+  console.log(numFish);
+}
