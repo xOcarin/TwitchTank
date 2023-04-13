@@ -1,6 +1,6 @@
 
     class Fish {
-      constructor(x, y, width, height, speed, ctx, name, type) {
+      constructor(x, y, width, height, speed, name, type) {
         this.image = new Image();
         this.imageR = new Image();
         this.imageL = new Image();
@@ -14,8 +14,6 @@
         this.speed = speed;
         this.checkH = true;
         this.checkV = false;
-        this.originalWidth = canvas.width * 0.0572916666666667;
-        this.originalHeight = canvas.height * 0.0467592592592593;
         this.numFrames;
         this.frameWidth;
         this.frameHeight;
@@ -25,7 +23,6 @@
         this.animationSpeed = 15;
         this.lastFrameTime = 0;
         this.name = name;
-        this.ctx;
         this.type = type;
       }
 
@@ -166,15 +163,14 @@
 
 
     const presidents = ["George Washington", "John Adams", "Thomas Jefferson", "James Madison", "James Monroe", "John Quincy Adams", "Andrew Jackson", "Martin Van Buren", "William Henry Harrison", "John Tyler"];
-    let numFish = 5;
+    let numFish = 10;
     let allFish = [];
 
     for (let i = 0; i < numFish; i++) {
-      allFish.push(new Fish(canvas.width/2, canvas.height/2, 50, 50, .75, ctx, presidents[i], "2"));
+      allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, presidents[i], "2"));
 }
 
     function updateFishDimensions() {
-
 
 
       allFish.forEach((fish) => {
@@ -196,7 +192,6 @@
 
     function animateAllFish() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
       allFish.forEach((fish) => {
         fish.animate();
       });
@@ -230,7 +225,7 @@ window.dispatchEvent(new Event('resize'));
 
 function incrementNumber() {
   numFish++;
-  allFish.push(new Fish(canvas.width/4 + (Math.floor(Math.random() * 500) + 1), canvas.height/4 + (Math.floor(Math.random() * 500) + 1), 50, 50, .75, ctx, 'new', "2"));
+  allFish.push(new Fish(canvas.width/4 + (Math.floor(Math.random() * 500) + 1), canvas.height/4 + (Math.floor(Math.random() * 500) + 1), 100, 100, .75, 'new', "2"));
   console.log(numFish);
 }
 
