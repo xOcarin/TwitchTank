@@ -12,7 +12,7 @@
         this.width = width;
         this.height = height;
         this.speed = speed;
-        this.checkH = true;
+        this.checkH = false;
         this.checkV = false;
         this.numFrames;
         this.frameWidth;
@@ -111,6 +111,7 @@
       }
 
       move() {
+        //are you in canvas bounds?
         if (this.x <= 0) {
           this.checkH = false;
         } else if (this.y >= (canvas.height - 75)) {
@@ -121,13 +122,17 @@
           this.checkV = true;
         }
 
+
+        //random vertical reverse
         if (Math.floor(Math.random() * 20) + 1 === (1 || 2)) {
           this.checkV = !this.checkV;
         }
+        //random horizontal reverse
         if (Math.floor(Math.random() * 500) + 1 === (1 || 2)) {
           this.checkH = !this.checkH;
         }
 
+        //if direction changes, change movement direction/image
         if (this.checkH === true) {
           this.x -= this.speed;
           this.image = this.imageL;
@@ -146,7 +151,6 @@
           } else {
             this.y -= this.speed;
           }
-          //this.animate()
         }
       }} //fish object
 
@@ -233,4 +237,5 @@ function decrementNumber() {
   allFish.splice(numFish, 1)
   numFish--;
   console.log(numFish);
+  
 }
