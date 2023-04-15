@@ -162,10 +162,24 @@
     canvas.width = 3840;
     canvas.height = 2160;
 
-
-    const names = [];
+    let names = [];
     let numFish = 10;
     let allFish = [];
+
+
+    setInterval(() => {
+        fetch('/viewers')
+          .then(response => response.json())
+          .then(data => {
+            names = data.viewers;
+            console.log(names);
+          })
+          .catch(error => console.error("mf: " + error));
+
+    }, 1000);
+
+    console.log("new: " + names);
+
 
     for (let i = 0; i < numFish; i++) {
       if(names.length > 0)

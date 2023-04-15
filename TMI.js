@@ -1,17 +1,15 @@
 const express = require('express');
 const app = express();
-const tmi = require('tmi.js'); // add this line
+const tmi = require('tmi.js');
 
 const viewers = [];
-
-
 
 const client = new tmi.Client({
   connection: {
     secure: true,
     reconnect: true,
   },
-  channels: ['meiyonetta'], // replace with your channel name
+  channels: ['meiyonetta'],
 });
 
 client.connect();
@@ -19,7 +17,7 @@ client.connect();
 client.on('join', (channel, username, self) => {
   if (!self) {
     console.log(`${username} has joined ${channel}`);
-    viewers.push(username); // add the username to the viewers array
+    viewers.push(username);
   }
 });
 
@@ -28,20 +26,18 @@ client.on('part', (channel, username, self) => {
     console.log(`${username} has left ${channel}`);
     const index = viewers.indexOf(username);
     if (index !== -1) {
-      viewers.splice(index, 1); // remove the username from the viewers array
+      viewers.splice(index, 1);
     }
   }
 });
 
 setInterval(() => {
   console.log('Viewers:', Array.from(viewers));
-}, 5000); // log viewers every 5 seconds
-
+}, 5000);
 
 app.get('/viewers', (req, res) => {
-  res.json({ viewers: viewers.length });
+  res.json({ viewers: viewers });
 });
-
 
 app.listen(8000, () => {
   console.log('Twitch server running on http://localhost:8000');

@@ -4,18 +4,22 @@ const fetch = require('node-fetch');
 
 app.use(express.static(__dirname));
 
-let viewers = 0;
+let viewers = [];
 
 app.get('/viewers', async (req, res) => {
-  res.send(`Current viewers: ${viewers}`);
+  res.json({ viewers });
 });
 
 setInterval(async () => {
-  const response = await fetch('http://localhost:8000/viewers');
-  const data = await response.json();
-  viewers = data.viewers;
-  console.log("HERE:::::::    " + viewers);
-}, 5000); // fetch data every 5 seconds
+  try {
+    const response = await fetch('http://localhost:8000/viewers');
+    const data = await response.json();
+    viewers = data.viewers;
+    console.log("HERE:::::::    " + viewers);
+  } catch (error) {
+    console.error("Error fetching viewers:", error);
+  }
+}, 1000);
 
 app.listen(3000, function() {
   console.log('Server running on http://localhost:3000');
