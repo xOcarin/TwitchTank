@@ -163,15 +163,19 @@
     canvas.height = 2160;
 
 
-
-
-
-    const presidents = ["George Washington", "John Adams", "Thomas Jefferson", "James Madison", "James Monroe", "John Quincy Adams", "Andrew Jackson", "Martin Van Buren", "William Henry Harrison", "John Tyler"];
+    const names = [];
     let numFish = 10;
     let allFish = [];
 
     for (let i = 0; i < numFish; i++) {
-      allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, presidents[i], "2"));
+      if(names.length > 0)
+      {
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, names[i], "2"));
+      }
+      else //for testing purposes
+      {
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Frank", "2"));
+      }
 }
 
     function updateFishDimensions() {
@@ -237,5 +241,5 @@ function decrementNumber() {
   allFish.splice(numFish, 1)
   numFish--;
   console.log(numFish);
-  
+  //hints: fish location at fish.x and fish.y allFish[i].x etc
 }
