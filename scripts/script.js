@@ -229,7 +229,7 @@ window.dispatchEvent(new Event('resize'));
 
 
 
-
+//useful functions
 
 function incrementNumber() {
   numFish++;
@@ -241,5 +241,20 @@ function decrementNumber() {
   allFish.splice(numFish, 1)
   numFish--;
   console.log(numFish);
+
   //hints: fish location at fish.x and fish.y allFish[i].x etc
+}
+
+
+
+
+function removeFromArr(name){
+  for (i in allFish)
+  {
+    if(allFish[i].name == name)
+    {
+      allFish.splice(i, 1);
+      return "Fish Removed";
+    }
+  }
 }

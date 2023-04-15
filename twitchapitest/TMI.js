@@ -1,5 +1,12 @@
-const tmi = require('tmi.js');
-require('dotenv').config();
+const express = require('express');
+const app = express();
+const tmi = require('tmi.js'); // add this line
+
+const viewers = [];
+
+app.get('/viewers', (req, res) => {
+  res.json({ viewers: viewers.length });
+});
 
 const client = new tmi.Client({
   connection: {
@@ -8,8 +15,6 @@ const client = new tmi.Client({
   },
   channels: ['michaelbryan'], // replace with your channel name
 });
-
-const viewers = [];
 
 client.connect();
 
@@ -34,4 +39,6 @@ setInterval(() => {
   console.log('Viewers:', Array.from(viewers));
 }, 5000); // log viewers every 5 seconds
 
-module.exports = { viewers };
+app.listen(8000, () => {
+  console.log('Twitch server running on http://localhost:8000');
+});
