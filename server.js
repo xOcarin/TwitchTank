@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const fetch = require('node-fetch');
 
 app.use(express.static(__dirname));
@@ -17,10 +18,8 @@ setInterval(async () => {
     viewers = data.viewers;
     console.log("HERE:::::::    " + viewers);
   } catch (error) {
-    console.error("Error fetching viewers:", error);
+    console.error("Error fetching viewers:");
   }
 }, 1000);
 
-app.listen(3000, function() {
-  console.log('Server running on http://localhost:3000');
-});
+module.exports = app;

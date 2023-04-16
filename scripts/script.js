@@ -173,6 +173,7 @@
           .then(data => {
             names = data.viewers;
             console.log(names);
+
           })
           .catch(error => console.error("mf: " + error));
 

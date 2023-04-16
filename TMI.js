@@ -39,6 +39,4 @@ app.get('/viewers', (req, res) => {
   res.json({ viewers: viewers });
 });
 
-app.listen(8000, () => {
-  console.log('Twitch server running on http://localhost:8000');
-});
+module.exports = app;
