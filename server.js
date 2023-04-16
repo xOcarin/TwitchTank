@@ -20,6 +20,6 @@ setInterval(async () => {
   } catch (error) {
     console.error("Error fetching viewers:");
   }
-}, 1000);
+}, 100);
 
 module.exports = app;

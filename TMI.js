@@ -2,38 +2,54 @@ const express = require('express');
 const app = express();
 const tmi = require('tmi.js');
 
-const viewers = [];
+const displayNames = [];
+let viewers = [];
+const lastActive = {};
 
 const client = new tmi.Client({
   connection: {
     secure: true,
     reconnect: true,
   },
-  channels: ['meiyonetta'],
+  channels: ['goongus_gongolo'],
 });
 
 client.connect();
 
-client.on('join', (channel, username, self) => {
-  if (!self) {
-    console.log(`${username} has joined ${channel}`);
-    viewers.push(username);
+client.on('message', (channel, tags, message, self) => {
+  const displayName = tags['display-name'];
+  if (!displayNames.includes(displayName)) {
+    displayNames.push(displayName);
   }
-});
-
-client.on('part', (channel, username, self) => {
-  if (!self) {
-    console.log(`${username} has left ${channel}`);
-    const index = viewers.indexOf(username);
-    if (index !== -1) {
-      viewers.splice(index, 1);
-    }
-  }
+  lastActive[displayName] = Date.now();
+  console.log(`${displayName}: ${message}`);
 });
 
 setInterval(() => {
   console.log('Viewers:', Array.from(viewers));
-}, 5000);
+  console.log('Display Names:', displayNames);
+  viewers = displayNames.slice();
+
+  const currentTime = Date.now();
+  Object.keys(lastActive).forEach((displayName) => {
+    if (currentTime - lastActive[displayName] > 30000) {
+      delete lastActive[displayName];
+      const index = displayNames.indexOf(displayName);
+      if (index !== -1) {
+        displayNames.splice(index, 1);
+        viewers = displayNames.slice();
+      }
+    }
+  });
+}, 100);
+
+
+
+
+
+
+
+
 
 app.get('/viewers', (req, res) => {
   res.json({ viewers: viewers });

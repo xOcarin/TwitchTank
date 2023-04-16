@@ -162,24 +162,60 @@
     canvas.width = 3840;
     canvas.height = 2160;
 
-    let names = [];
-    let numFish = 10;
+    let enterfish = [];
+    let numFish = 1;
     let allFish = [];
+    let names = [];
 
+    let firstLetter = " ";
+    let type = "0"
 
     setInterval(() => {
         fetch('/viewers')
           .then(response => response.json())
           .then(data => {
-            names = data.viewers;
-            console.log(names);
+
+
+            enterfish = data.viewers;
+
+            console.log("current: " +  enterfish);
+
+            enterfish.forEach((value) => {
+              if (!names.includes(value)) {
+                names.push(value);
+                firstLetter = value.charAt(0);
+                type = charToNum(firstLetter);
+                type = type % 6;
+
+                allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, value, type.toString()));
+              }
+            });
+
+            names.forEach((value) => {
+              if (names.includes(value) && !enterfish.includes(value)) {
+                const index = names.indexOf(value);
+                const fishdex = allFish.indexOf(value);
+                if (index !== -1) {
+                  names.splice(index, 1);
+                  removeFromArr(value);
+                }
+              }
+            });
+
+
 
           })
           .catch(error => console.error("mf: " + error));
 
     }, 1000);
 
-    console.log("new: " + names);
+
+
+
+
+
+
+
 
 
     for (let i = 0; i < numFish; i++) {
@@ -244,21 +280,6 @@ window.dispatchEvent(new Event('resize'));
 
 
 
-//useful functions
-
-function incrementNumber() {
-  numFish++;
-  allFish.push(new Fish(canvas.width/4 + (Math.floor(Math.random() * 500) + 1), canvas.height/4 + (Math.floor(Math.random() * 500) + 1), 100, 100, .75, 'new', "2"));
-  console.log(numFish);
-}
-
-function decrementNumber() {
-  allFish.splice(numFish, 1)
-  numFish--;
-  console.log(numFish);
-
-  //hints: fish location at fish.x and fish.y allFish[i].x etc
-}
 
 
 
@@ -272,4 +293,11 @@ function removeFromArr(name){
       return "Fish Removed";
     }
   }
+}
+
+
+function charToNum(char) {
+  const charCode = char.charCodeAt(0);
+  const aCode = 'a'.charCodeAt(0);
+  return charCode - aCode + 1;
 }
