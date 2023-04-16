@@ -34,32 +34,32 @@
 
         switch (this.type) {
           case "1":
-            this.imageL.src = 'assets/fish/testL.png';
-            this.imageR.src = 'assets/fish/testR.png';
+            this.imageL.src = 'assets/fish/angelL.png';
+            this.imageR.src = 'assets/fish/angelR.png';
             this.numFrames = 26;
             this.frameWidth = 200;
             this.frameHeight = 200;
             break;
           case "2":
-            this.imageL.src = 'assets/fish/yguyL.png';
-            this.imageR.src = 'assets/fish/yguyR.png';
+            this.imageL.src = 'assets/fish/batL.png';
+            this.imageR.src = 'assets/fish/batR.png';
             this.numFrames = 26;
             this.frameWidth = 200;
             this.frameHeight = 200;
             break;
           case "3":
-            this.imageL.src = 'assets/fish/rainbow_Bass_spritesheetL.png';
-            this.imageR.src = 'assets/fish/rainbow_Bass_spritesheetR.png';
-            this.numFrames = 15;
+            this.imageL.src = 'assets/fish/longnoseL.png';
+            this.imageR.src = 'assets/fish/longnoseR.png';
+            this.numFrames = 26;
             this.frameWidth = 200;
-            this.frameHeight = 77;
+            this.frameHeight = 200;
             break;
           case "4":
-            this.imageL.src = 'assets/fish/Bass_spritesheet.png';
-            this.imageR.src = 'assets/fish/Bass_spritesheetR.png';
-            this.numFrames = 15;
+            this.imageL.src = 'assets/fish/unicornL.png';
+            this.imageR.src = 'assets/fish/unicornR.png';
+            this.numFrames = 26;
             this.frameWidth = 200;
-            this.frameHeight = 77;
+            this.frameHeight = 200;
             break;
           case "5":
             this.imageL.src = 'assets/fish/Uber_Bass_spritesheetL.png';
@@ -187,6 +187,10 @@
                 type = charToNum(firstLetter);
                 type = type % 6;
 
+
+
+                let xpos = Math.floor(Math.random() * (canvas.width - 100 + 1) + 100);
+                let ypos = Math.floor(Math.random() * (canvas.width - 100 + 1) + 100);
                 allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, value, type.toString()));
               }
             });
@@ -225,7 +229,10 @@
       }
       else //for testing purposes
       {
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Frank", "2"));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Steve", "1"));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Chauncy", "2"));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Frank", "3"));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Patricia", "4"));
       }
 }
 
