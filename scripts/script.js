@@ -93,6 +93,10 @@
 
           ctx.drawImage(this.image, sourceX, sourceY, sourceWidth, sourceHeight, this.x, this.y, this.width, this.height);
 
+
+
+
+          death(ctx, "hello", 200, 200)
           // get the width of the text
           const textWidth = ctx.measureText(this.name).width;
 
@@ -308,4 +312,11 @@ function charToNum(char) {
   const charCode = char.charCodeAt(0);
   const aCode = 'a'.charCodeAt(0);
   return charCode - aCode + 1;
+}
+
+var img1 = new Image();
+img1.src = "assets/fish/fish.png";
+
+function death(ctx, name, x, y) {
+  ctx.drawImage(img1, x, y, 200, 200);
 }
