@@ -1,4 +1,4 @@
-
+let counter = 0;
     class Fish {
       constructor(x, y, width, height, speed, name, type) {
         this.image = new Image();
@@ -24,6 +24,9 @@
         this.lastFrameTime = 0;
         this.name = name;
         this.type = type;
+        this.isAlive = true;
+        this.deathx = 0;
+        this.deathy = 0;
       }
 
 
@@ -76,11 +79,11 @@
             this.frameHeight = 77;
             break;
           default:
-            this.imageL.src = 'assets/fish/fish_spritesheet.png';
-            this.imageR.src = 'assets/fish/fish_spritesheetR.png';
+            this.imageL.src = 'assets/fish/angelL.png';
+            this.imageR.src = 'assets/fish/angelR.png';
             this.numFrames = 9;
-            this.frameWidth = 167;
-            this.frameHeight = 77;
+            this.frameWidth = 200;
+            this.frameHeight = 200;
       }
 
 
@@ -91,12 +94,12 @@
           const sourceHeight = this.frameHeight;
           //ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+        if(!this.isAlive){
+            ctx.drawImage(this.image, 0, 0, sourceWidth, sourceHeight, this.deathx, this.deathy, this.width, this.height);
+          }
+        if(this.isAlive){
           ctx.drawImage(this.image, sourceX, sourceY, sourceWidth, sourceHeight, this.x, this.y, this.width, this.height);
 
-
-
-
-          death(ctx, "hello", 200, 200)
           // get the width of the text
           const textWidth = ctx.measureText(this.name).width;
 
@@ -107,6 +110,11 @@
           ctx.font = "15px 'Comic Sans'";
           ctx.fillStyle = "white";
           ctx.fillText(this.name, textX, this.y);
+          counter++;
+        }
+
+
+
 
           this.currentFrame = (this.currentFrame + 1) % this.numFrames;
           this.lastFrameTime = currentTime;
@@ -194,8 +202,8 @@
 
 
                 let xpos = Math.floor(Math.random() * (canvas.width - 100 + 1) + 100);
-                let ypos = Math.floor(Math.random() * (canvas.width - 100 + 1) + 100);
-                allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, value, type.toString()));
+                let ypos = Math.floor(Math.random() * (canvas.height - 100 + 1) + 100);
+                allFish.push(new Fish(xpos, ypos, 100, 100, .75, value, type.toString()));
               }
             });
 
@@ -204,7 +212,8 @@
                 const index = names.indexOf(value);
                 const fishdex = allFish.indexOf(value);
                 if (index !== -1) {
-                  names.splice(index, 1);
+                  //names.splice(index, 1);
+                  //death(value);
                   removeFromArr(value);
                 }
               }
@@ -301,7 +310,8 @@ function removeFromArr(name){
   {
     if(allFish[i].name == name)
     {
-      allFish.splice(i, 1);
+      //allFish.splice(i, 1);
+      death(allFish[i]);
       return "Fish Removed";
     }
   }
@@ -317,6 +327,12 @@ function charToNum(char) {
 var img1 = new Image();
 img1.src = "assets/fish/fish.png";
 
-function death(ctx, name, x, y) {
-  ctx.drawImage(img1, x, y, 200, 200);
+function death(fish) {
+  if(fish.isAlive){
+      fish.isAlive = false;
+      fish.deathx = fish.x;
+      fish.deathy = fish.y;
+    }
+      return "Fish Removed";
+
 }
