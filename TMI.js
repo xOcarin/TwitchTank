@@ -11,7 +11,7 @@ const client = new tmi.Client({
     secure: true,
     reconnect: true,
   },
-  channels: ['ohnepixel'],
+  channels: ['goongus_gongolo'],
 });
 
 client.connect();

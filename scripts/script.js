@@ -62,11 +62,11 @@
             this.frameHeight = 200;
             break;
           case "5":
-            this.imageL.src = 'assets/fish/Uber_Bass_spritesheetL.png';
-            this.imageR.src = 'assets/fish/Uber_Bass_spritesheetR.png';
-            this.numFrames = 15;
+            this.imageL.src = 'assets/fish/angel_deadL.png';
+            this.imageR.src = 'assets/fish/angel_deadR.png';
+            this.numFrames = 30;
             this.frameWidth = 200;
-            this.frameHeight = 77;
+            this.frameHeight = 200;
             break;
           case "6":
             this.imageL.src = 'assets/fish/Sherbert_Bass_spritesheetL.png';
@@ -233,6 +233,7 @@
         allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Chauncy", "2"));
         allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Frank", "3"));
         allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Patricia", "4"));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "flippy dippy", "5"));
       }
 }
 
