@@ -8,10 +8,10 @@
     <img  src='./assets/logo.png' class="logo"></img>
     <img  src='./assets/logbutton.png' class="logbutton" onClick="showLogin()"></img>
     <div class="signup">
-    <p>Don't have an account?</p>
-    <u id="signup-button" onClick="showSignup()">Signup here.</u>
+    <p id="signup-button" onClick="showSignup()">Don't have an account?<u>Signup here.</u></p>
     </div>
     <script src="scripts/utils.js"></script>
+    <script src="scripts/homescript.js"></script>
 
 
 
@@ -33,7 +33,7 @@
     </div>
 
     <div class="login-container" id="signup-container" style="display:none;">
-      <form class="login-form">
+      <form class="login-form" action="../phphandlers/signup.php" method="post">
         <label for="username">Email</label>
         <input type="text" id="email" name="email">
         <label for="username">Username</label>
