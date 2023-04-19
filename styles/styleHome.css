@@ -8,6 +8,7 @@ body {
   align-items: stretch;
   height: 10vh;
   width: 150vw;
+  background-image: url("../assets/bg/homebackground.jpeg");
 }
 
 

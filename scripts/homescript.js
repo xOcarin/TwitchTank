@@ -296,27 +296,17 @@ let counter = 0;
       }
       else //for testing purposes
       {
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Steve", "1"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Chauncy", "2"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Frank", "3"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Patricia", "4"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "flippy dippy", "5"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Steve", "1"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Chauncy", "2"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Frank", "3"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Patricia", "4"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "flippy dippy", "5"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Steve", "1"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Chauncy", "2"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Frank", "3"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Patricia", "4"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "flippy dippy", "5"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Steve", "1"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Chauncy", "2"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Frank", "3"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Patricia", "4"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "flippy dippy", "5"));
-        
+        let size = Math.floor(Math.random() * (125 - 100 + 1) + 100);
+        let type = Math.floor(Math.random() * (5 - 1 + 1) + 1);
+        type = type.toString();
+
+        for(let i = 0; i < 30; i++){
+          size = Math.floor(Math.random() * (125 - 100 + 1) + 100);
+          type = Math.floor(Math.random() * (5 - 1 + 1) + 1);
+          type = type.toString();
+          allFish.push(new Fish(canvas.width/2, canvas.height/2, size, size, .75, "Steve", type));
+      }
+
 
 
       }
