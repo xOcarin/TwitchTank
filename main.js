@@ -7,12 +7,15 @@ let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 1920,
-    height: 1080,
+    width: 1260,
+    height: 720,
     webPreferences: {
       nodeIntegration: true
     }
   });
+
+
+  mainWindow.maximize();
 
   staticServer.listen(3000, () => {
     console.log('Static server running on port 3000');

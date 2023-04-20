@@ -1,15 +1,31 @@
+@font-face {
+  font-family: 'Comic Sans';
+  src: url('../assets/fonts/comicsans.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Funky Font';
+  src: url('../assets/fonts/funkyfont.otf') format('opentype');
+}
+@font-face {
+  font-family: 'pophappy';
+  src: url('../assets/fonts/pophappy.otf') format('opentype');
+}
+
+
 body {
   margin: 0;
   padding: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: stretch;
-  height: 10vh;
-  width: 150vw;
+  width: 100vw;
   background-image: url("../assets/bg/homebackground.jpeg");
+  font-family: 'pophappy', sans-serif;
 }
+
 
 
 canvas {
@@ -26,6 +42,7 @@ canvas {
 }
 
 
+
 .header {
   display: flex;
   justify-content: center;
@@ -36,30 +53,61 @@ canvas {
 }
 
 .logo {
-
   height: auto;
   margin: 0 auto;
   position: absolute;
   left: 50%;
   top: 5%;
-  transform: translateX(-50%);
+  transform: scale(.75) translateX(-70%);
 }
+
+
+
+.signupandlogin{
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  height: 70px; /* Set a specific height for the container */
+  bottom: 25%;
+}
+
 .logbutton {
   height: auto;
   margin: 0 auto;
   position: absolute;
   left: 50%;
-  bottom: 18%;
+  bottom: 30%;
   transform: translateX(-50%);
 }
+
 .signup {
   height: auto;
   margin: 0 auto;
   position: absolute;
   left: 50%;
-  bottom: 15%;
+  bottom: calc(30% - 20px); /* adjust this value to the desired distance from the login button */
   transform: translateX(-50%);
 }
+
+@media (max-height: 900px) {
+  .logo {
+    top: 2%;
+    transform: scale(.60) translateX(-85%);
+  }
+
+  .signupandlogin {
+    bottom: 5%;
+    transform: scale(.70);
+  }
+}
+@media (max-height: 1400px) {
+
+  .signupandlogin {
+    bottom: 30%;
+  }
+}
+
+
 .testbutton {
   height: auto;
   margin: 0 auto;
@@ -89,9 +137,58 @@ canvas {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Comic Sans', sans-serif;
+  font-family: 'pophappy', sans-serif;
   text-fill-color: #319cc5;
   flex-grow: 1;
   width: 100%;
   margin: 0;
+
+}
+
+
+.login-form label,
+.login-form input {
+  font-size: 50px !important; /* increase font size to 24px */
+}
+
+
+button[type="submit"] {
+  padding: 16px 24px; /* increase padding */
+  font-family: 'pophappy', sans-serif;
+  font-size: 50px; /* increase font size */
+}
+
+
+
+
+label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  font-family: 'pophappy', sans-serif;
+  background-color: #0099FF;
+  color: white;
+  width: 100%;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0044FF;
 }
