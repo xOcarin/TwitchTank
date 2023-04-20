@@ -122,7 +122,7 @@ let counter = 0;
           ctx.font = "15px 'Comic Sans'";
           ctx.fillStyle = "white";
           ctx.fillText(this.name, textX, this.y);
-          counter++;
+
         }
 
 
@@ -215,7 +215,11 @@ let counter = 0;
 
                 let xpos = Math.floor(Math.random() * (canvas.width - 100 + 1) + 100);
                 let ypos = Math.floor(Math.random() * (canvas.height - 100 + 1) + 100);
+                if(counter < 200){
                 allFish.push(new Fish(xpos, ypos, 100, 100, .75, value, type.toString()));
+                console.log("here: " + allFish.length);
+                counter++;
+              }
               }
             });
 
@@ -227,6 +231,7 @@ let counter = 0;
                   //names.splice(index, 1);
                   //death(value);
                   removeFromArr(value);
+
                 }
               }
             });

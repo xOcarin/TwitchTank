@@ -48,7 +48,23 @@ canvas {
   margin: 0 auto;
   position: absolute;
   left: 50%;
-  top: 50%;
+  bottom: 18%;
+  transform: translateX(-50%);
+}
+.signup {
+  height: auto;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  bottom: 15%;
+  transform: translateX(-50%);
+}
+.testbutton {
+  height: auto;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  top: 90%;
   transform: translateX(-50%);
 }
 
@@ -77,12 +93,4 @@ canvas {
   flex-grow: 1;
   width: 100%;
   margin: 0;
-}
-.signup {
-  height: auto;
-  margin: 0 auto;
-  position: absolute;
-  left: 50%;
-  top: 60%;
-  transform: translateX(-50%);
 }

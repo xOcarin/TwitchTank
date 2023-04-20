@@ -236,49 +236,6 @@ let counter = 0;
     let firstLetter = " ";
     let type = "0"
 
-    setInterval(() => {
-        fetch('/viewers')
-          .then(response => response.json())
-          .then(data => {
-
-
-            enterfish = data.viewers;
-
-            console.log("current: " +  enterfish);
-
-            enterfish.forEach((value) => {
-              if (!names.includes(value)) {
-                names.push(value);
-                firstLetter = value.charAt(0);
-                type = charToNum(firstLetter);
-                type = type % 6;
-
-
-
-                let xpos = Math.floor(Math.random() * (canvas.width - 100 + 1) + 100);
-                let ypos = Math.floor(Math.random() * (canvas.height - 100 + 1) + 100);
-                allFish.push(new Fish(xpos, ypos, 100, 100, .75, value, type.toString()));
-              }
-            });
-
-            names.forEach((value) => {
-              if (names.includes(value) && !enterfish.includes(value)) {
-                const index = names.indexOf(value);
-                const fishdex = allFish.indexOf(value);
-                if (index !== -1) {
-                  //names.splice(index, 1);
-                  //death(value);
-                  removeFromArr(value);
-                }
-              }
-            });
-
-
-
-          })
-          .catch(error => console.error("mf: " + error));
-
-    }, 1000);
 
 
 
@@ -309,6 +266,7 @@ let counter = 0;
 
 
 
+
       }
 }
 
@@ -318,9 +276,9 @@ let counter = 0;
       allFish.forEach((fish) => {
 
 
-        let minx = 100;
+        let minx = 0;
         let maxx = canvas.width;
-        let miny = 100;
+        let miny = 0;
         let maxy = canvas.height;
         let sx = Math.floor(Math.random() * (maxx - minx + 1) + minx);
         let sy = Math.floor(Math.random() * (maxy - miny + 1) + miny);
