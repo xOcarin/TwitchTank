@@ -11,7 +11,7 @@ const client = new tmi.Client({
     secure: true,
     reconnect: true,
   },
-  channels: ['goongus_gongolo'],
+  channels: ['gaules'],
 });
 
 client.connect();
@@ -32,7 +32,7 @@ setInterval(() => {
 
   const currentTime = Date.now();
   Object.keys(lastActive).forEach((displayName) => {
-    if (currentTime - lastActive[displayName] > 30000) {
+    if (currentTime - lastActive[displayName] > 90000) {
       delete lastActive[displayName];
       const index = displayNames.indexOf(displayName);
       if (index !== -1) {

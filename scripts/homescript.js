@@ -1,6 +1,6 @@
 let counter = 0;
     class Fish {
-      constructor(x, y, width, height, speed, name, type) {
+      constructor(x, y, width, height, speed, name, type, direction) {
         this.image = new Image();
         this.imageR = new Image();
         this.imageL = new Image();
@@ -12,7 +12,7 @@ let counter = 0;
         this.width = width;
         this.height = height;
         this.speed = speed;
-        this.checkH = false;
+        this.checkH = direction;
         this.checkV = false;
         this.numFrames;
         this.frameWidth;
@@ -125,7 +125,7 @@ let counter = 0;
           default:
             this.imageL.src = 'assets/fish/angelL.png';
             this.imageR.src = 'assets/fish/angelR.png';
-            this.numFrames = 9;
+            this.numFrames = 26;
             this.frameWidth = 200;
             this.frameHeight = 200;
       }
@@ -225,8 +225,8 @@ let counter = 0;
     const ctx = canvas.getContext("2d");
     let width = window.innerWidth;
     let height = window.innerHeight;
-    canvas.width = 3840;
-    canvas.height = 2160;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
     let enterfish = [];
     let numFish = 1;
@@ -253,16 +253,31 @@ let counter = 0;
       }
       else //for testing purposes
       {
-        let size = Math.floor(Math.random() * (125 - 100 + 1) + 100);
-        let type = Math.floor(Math.random() * (5 - 1 + 1) + 1);
+        let size = 0;
+        let spawnx = 0;
+        let spawny = 0;
+        let type = 0;
         type = type.toString();
 
-        for(let i = 0; i < 30; i++){
+        //leftfish
+        for(let i = 0; i < 15; i++){
           size = Math.floor(Math.random() * (125 - 100 + 1) + 100);
           type = Math.floor(Math.random() * (5 - 1 + 1) + 1);
+          spawnx = Math.floor(Math.random() * (350 - 1 + 1) + 1);
+          spawny = Math.floor(Math.random() * (canvas.height - 1 + 1) + 1);
           type = type.toString();
-          allFish.push(new Fish(canvas.width/2, canvas.height/2, size, size, .75, "Steve", type));
-      }
+          allFish.push(new Fish(spawnx, spawny, size, size, .75, "Steve", type, false));
+        }
+
+        //rightfish
+        for(let i = 0; i < 15; i++){
+          size = Math.floor(Math.random() * (125 - 100 + 1) + 100);
+          type = Math.floor(Math.random() * (5 - 1 + 1) + 1);
+          spawnx = Math.floor(Math.random() * 381) + (canvas.width - 380);
+          spawny = Math.floor(Math.random() * (canvas.height - 1 + 1) + 1);
+          type = type.toString();
+          allFish.push(new Fish(spawnx, spawny, size, size, .75, "Steve", type, true));
+        }
 
 
 
@@ -283,8 +298,8 @@ let counter = 0;
         let sx = Math.floor(Math.random() * (maxx - minx + 1) + minx);
         let sy = Math.floor(Math.random() * (maxy - miny + 1) + miny);
 
-        fish.x = sx;
-        fish.y = sy;
+        //fish.x = sx;
+        //fish.y = sy;
       });
     }
 

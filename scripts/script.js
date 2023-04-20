@@ -100,7 +100,7 @@
           const textX = this.x + (this.width / 2) - (textWidth / 2);
 
           // draw the text
-          ctx.font = "15px 'Comic Sans'";
+          ctx.font = "15px 'pophappy'";
           ctx.fillStyle = "white";
           ctx.fillText(this.name, textX, this.y);
 
