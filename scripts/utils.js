@@ -26,3 +26,13 @@ function goBack() {
   document.getElementById('login-container').style.display = 'none';
   document.getElementById('signup-container').style.display = 'none';
 }
+
+
+function playHoverSound() {
+
+  var audio = document.getElementById("hoverAudio");
+  audio.play();
+  audio.volume = 0.05; // set volume to 50%
+
+
+}

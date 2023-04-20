@@ -6,7 +6,8 @@
   <body>
     <canvas id="canvas"></canvas>
     <script src="./scripts/script.js"></script>
-
+    <script src="./scripts/utils.js"></script>
+    <audio id="hoverAudio" src="./assets/sounds/hover.wav" preload="auto"></audio>
 
     <div class="settings-container">
         <img id="settingheader" src='./assets/settings/settings_header.png'></img>
@@ -32,8 +33,8 @@
 
         <img id="themeheader" src='./assets/settings/theme_header.png'></img>
         <div class="themes">
-            <img id="theme1" src='./assets/settings/oceantheme.png'></img>
-            <img id="theme2" src='./assets/settings/pixeltheme.png'></img>
+            <img id="theme1" src='./assets/settings/oceantheme.png' onmouseover="playHoverSound()"></img>
+            <img id="theme2" src='./assets/settings/pixeltheme.png' onmouseover="playHoverSound()"></img>
         </div>
 
         <div class="themestitles">
