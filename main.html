@@ -6,16 +6,24 @@
   <body>
     <canvas id="canvas"></canvas>
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/utils.js"></script>
+    <audio id="hoverAudio" src="./assets/sounds/hover.wav" preload="auto"></audio>
+    <audio id="clickAudio" src="./assets/sounds/click.wav" preload="auto"></audio>
+
+    <div class="main-ui" id="mainui">
+        <img id="settings" src='./assets/settings/button_selected.png' onclick="playClickSound(); displaySettings()"></img>
+    </div>
 
 
-    <div class="settings-container">
+
+    <div class="settings-container" id="settingscontainer">
         <img id="settingheader" src='./assets/settings/settings_header.png'></img>
 
         <img id="sizeheader" src='./assets/settings/size_header.png'></img>
         <div class="sizebuttons">
-            <img id="small" src='./assets/settings/button.png'></img>
-            <img id="medium" src='./assets/settings/button.png'></img>
-            <img id="large" src='./assets/settings/button.png'></img>
+            <img id="small" src='./assets/settings/button_selected.png' onclick="radioOnClick('small'); radioExclusive('small', '.sizebuttons'); playClickSound()"></img>
+            <img id="medium" src='./assets/settings/button.png' onclick="radioOnClick('medium'); radioExclusive('medium', '.sizebuttons'); playClickSound()"></img>
+            <img id="large" src='./assets/settings/button.png' onclick="radioOnClick('large'); radioExclusive('large', '.sizebuttons'); playClickSound()"></img>
         </div>
 
 
@@ -23,17 +31,18 @@
 
         <img id="counterheader" src='./assets/settings/counter_header.png'></img>
         <div class="counterbuttons">
-            <img id="off" src='./assets/settings/button.png'></img>
-            <img id="on" src='./assets/settings/button.png'></img>
+            <img id="off" src='./assets/settings/button_selected.png' onclick="radioOnClick('off'); radioExclusive('off', '.counterbuttons'); playClickSound()"></img>
+            <img id="on" src='./assets/settings/button.png' onclick="radioOnClick('on'); radioExclusive('on', '.counterbuttons'); playClickSound()"></img>
         </div>
 
         <img id="timeoutheader" src='./assets/settings/timeout_header.png'></img>
-        <input type="text" id="timeoutform"> </img>
+        <input type="number" min="1" max="30" id="timeoutform" value="15" onblur="restrictTimeoutInput()"> </img>
+        <p id="timeoutchoice">1-30 minutes</p>
 
         <img id="themeheader" src='./assets/settings/theme_header.png'></img>
         <div class="themes">
-            <img id="theme1" src='./assets/settings/oceantheme.png'></img>
-            <img id="theme2" src='./assets/settings/pixeltheme.png'></img>
+            <img id="theme1" src='./assets/settings/oceantheme_selected.png' onclick="oceanthemeOnClick(); playClickSound()" onmouseover="playHoverSound()"></img>
+            <img id="theme2" src='./assets/settings/pixeltheme.png' onclick="pixelthemeOnClick(); playClickSound()" onmouseover="playHoverSound()"></img>
         </div>
 
         <div class="themestitles">
@@ -43,7 +52,8 @@
 
 
 
-        <img id="applybutton" src='./assets/settings/applybtn.png'></img>
+        <img id="applybutton" src='./assets/settings/applybtn.png' onclick="playClickSound();  acceptAndApply()"></img>
+        <img id="applybuttononhover" src='./assets/settings/applybtnonhover.png' style="display:none"></img>
 
     </div>
   </body>
