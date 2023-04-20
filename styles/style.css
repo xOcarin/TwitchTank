@@ -41,8 +41,9 @@ canvas {
   transform: translate(-50%, -50%);
   width: 1001px;
   height: 973px;
-  padding: 0px;
+  padding: 40px;
   border-radius: 20px;
+  display: none;
 }
 
 .settings-container img {
@@ -180,8 +181,46 @@ canvas {
 }
 
 #timeoutform{
-  transform: translateY(-80%);
+  transform: translateY(-10%);
+  font-family: "pophappy", sans-serif !important;
+  color: #888888 !important;
+  border: 2px solid white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transform: scale(2);
 }
+
+
+#timeoutform:focus {
+  color: #000000 !important;
+  outline: none;
+}
+
+#timeoutform::-webkit-outer-spin-button,
+#timeoutform::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#timeoutform {
+  -moz-appearance: textfield;
+}
+
+#timeoutchoice{
+  color: #FFFFFF !important;
+  transform: translateY(-19%);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
 
 #themeheader{
   user-drag: none;
