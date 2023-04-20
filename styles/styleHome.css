@@ -3,7 +3,7 @@ body {
   padding: 0;
   overflow: hidden;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
   height: 10vh;
@@ -36,6 +36,7 @@ canvas {
 }
 
 .logo {
+
   height: auto;
   margin: 0 auto;
   position: absolute;
