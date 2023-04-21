@@ -1,108 +1,37 @@
 <?php
 
-session_start();
-
-$servername = "";
-
-$username = "";
-
-$password = "";
-
-$dbname = "";
-
-
-
-
-// Create connection
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-
-
-// Check connection
-
-if ($conn->connect_error) {
-
-    die("Connection failed: " . $conn->connect_error);
-
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
 }
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Get input values from client-side
+    $username = $_GET['username'];
+    $pass = $_GET['password'];
+    $email = $_GET['email'];
 
+    require_once 'connect.php';
 
-// Get user data from form submission
+    // Hash the password using the default algorithm
+    $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
 
-$username = $_POST['username'];
+    $sql = "INSERT INTO users (username, password, email, size, counter, timeout, theme) VALUES ('$username', '$hashed_password', '$email', 1, 0, 15, 1)";
 
-$password = $_POST['password'];
+    if (mysqli_query($conn, $sql)) {
+        $result["success"] = "1";
+        $result["message"] = "success";
 
+        echo json_encode($result);
 
-
-// Query the database for the user with the given username
-
-$sql = "SELECT * FROM users WHERE usersUid='$username'";
-
-$result = $conn->query($sql);
-
-
-
-// Check if the user was found
-
-if ($result->num_rows == 1) {
-
-    $row = $result->fetch_assoc();
-
-    // Verify the password
-
-    if (password_verify($password, $row['usersPwd'])) {
-
-        // Password is correct, so start a new session
-
-        session_regenerate_id();
-
-        $_SESSION['loggedin'] = TRUE;
-
-        $_SESSION['username'] = $username;
-
-        $_SESSION['userid'] = $row['usersId'];
-
-
-
-        // Set a cookie to store the session ID
-
-        setcookie('username', $username, time() + 3600);
-
-
-
-
-
-        header('Location: ../index.html?username=' . $username);
-
-        exit;
-
+        mysqli_close($conn);
     } else {
+        $result["success"] = "0";
+        $result["message"] = "failed";
 
-        // Password is incorrect
+        echo json_encode($result);
 
-        echo '<script>alert("Incorrect username or password."); window.location.href="../pages/loginscreen.html";</script>';
-
-        exit();
-
+        mysqli_close($conn);
     }
-
-} else {
-
-    // User not found
-
-    echo '<script>alert("Incorrect username or password."); window.location.href="../pages/loginscreen.html";</script>';
-
-    exit();
-
 }
-
-
-
-$conn->close();
-
-
 
 ?>
