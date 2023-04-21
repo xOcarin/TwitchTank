@@ -216,7 +216,7 @@ let counter = 0;
 
                 enterfish = data.viewers;
 
-                console.log("current: " +  enterfish);
+                //console.log("current: " +  enterfish);
 
                 enterfish.forEach((value) => {
                   if (!names.includes(value)) {
@@ -231,7 +231,7 @@ let counter = 0;
                     let ypos = Math.floor(Math.random() * (canvas.height - 100 + 1) + 100);
                     if(counter < 200){
                     allFish.push(new Fish(xpos, ypos, (canvas.width * 0.05) * settings.size/2, (canvas.height * 0.05) * settings.size/2, .75, value, type.toString()));
-                    console.log("here: " + allFish.length);
+                    //console.log("here: " + allFish.length);
                     counter++;
                   }
                   }

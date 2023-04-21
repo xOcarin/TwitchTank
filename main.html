@@ -7,6 +7,7 @@
     <canvas id="canvas"></canvas>
     <script defer src="./scripts/pixelscript.js"></script>
     <script src="./scripts/utils.js"></script>
+    <script defer src="./scripts/loadsettings.js"></script>
     <audio id="hoverAudio" src="./assets/sounds/hover.wav" preload="auto"></audio>
     <audio id="clickAudio" src="./assets/sounds/click.wav" preload="auto"></audio>
     <div class="main-ui" id="mainui">
@@ -21,7 +22,7 @@
 
         <img id="sizeheader" src='./assets/settings/size_header.png'></img>
         <div class="sizebuttons">
-            <img id="small" src='./assets/settings/button_selected.png' onclick="radioOnClick('small'); radioExclusive('small', '.sizebuttons'); playClickSound()"></img>
+            <img id="small" src='./assets/settings/button.png' onclick="radioOnClick('small'); radioExclusive('small', '.sizebuttons'); playClickSound()"></img>
             <img id="medium" src='./assets/settings/button.png' onclick="radioOnClick('medium'); radioExclusive('medium', '.sizebuttons'); playClickSound()"></img>
             <img id="large" src='./assets/settings/button.png' onclick="radioOnClick('large'); radioExclusive('large', '.sizebuttons'); playClickSound()"></img>
         </div>
@@ -31,7 +32,7 @@
 
         <img id="counterheader" src='./assets/settings/counter_header.png'></img>
         <div class="counterbuttons">
-            <img id="off" src='./assets/settings/button_selected.png' onclick="radioOnClick('off'); radioExclusive('off', '.counterbuttons'); playClickSound()"></img>
+            <img id="off" src='./assets/settings/button.png' onclick="radioOnClick('off'); radioExclusive('off', '.counterbuttons'); playClickSound()"></img>
             <img id="on" src='./assets/settings/button.png' onclick="radioOnClick('on'); radioExclusive('on', '.counterbuttons'); playClickSound()"></img>
         </div>
 
