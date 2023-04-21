@@ -1,4 +1,25 @@
 
+
+const fs = require('fs');
+
+// Set the values of the settings variables
+let settings_size;
+let settings_counterstate;
+let settings_timeout;
+let settings_theme;
+let settings_streamername;
+
+// Create an object with the settings variables
+let settings = {
+  size: settings_size,
+  counterstate: settings_counterstate,
+  timeout: settings_timeout,
+  theme: settings_theme,
+  streamername: settings_streamername
+};
+
+
+
 
 
 function showLogin() {
@@ -30,12 +51,34 @@ function goBack() {
 
 
 function radioOnClick(button) {
+
   const originalImage = document.getElementById(button);
   const newImage = new Image();
   newImage.src = './assets/settings/button_selected.png';
     newImage.onload = function() {
       originalImage.src = newImage.src;
     };
+switch (button) {
+  case "small":
+    settings_size = 1;
+    break;
+  case "medium":
+    settings_size = 2;
+    break;
+  case "large":
+    settings_size = 3;
+    break;
+  case "off":
+    settings_counterstate = false;
+    break;
+  case "on":
+    settings_counterstate = true;
+    break;
+  default:
+
+}
+
+
 }
 
 function radioExclusive(button, div) {
@@ -63,6 +106,7 @@ function oceanthemeOnClick() {
   offImage.onload = function() {
     altImage.src = offImage.src;
   };
+  settings_theme = 1;
 }
 
 
@@ -79,14 +123,81 @@ function pixelthemeOnClick() {
   offImage.onload = function() {
     altImage.src = offImage.src;
   };
+  settings_theme = 2;
 }
 
 function acceptAndApply() {
   document.getElementById('settingscontainer').style.display = 'none';
+  // Create an object with the settings variables
+
+  console.log("size:" + settings_size);
+  console.log("counter:" + settings_counterstate);
+  console.log("theme:" + settings_theme);
+  console.log("timeout:" + settings_timeout);
+  settings.size = settings_size;
+  settings.counter = settings_counterstate;
+  settings.theme = settings_theme;
+  settings.timeout = settings_timeout
+  settings.streamername = settings_streamername
+  const settingsJSON = JSON.stringify(settings);
+
+  // Write the JSON string to a file named "settings.json"
+  fs.writeFile('settings.json', settingsJSON, (err) => {
+    if (err) throw err;
+    console.log('Settings saved to file');
+  });
+  /*
+  document.body.classList.add('fade-out');
+
+  // Wait for the fade-out transition to finish before reloading the page
+  setTimeout(function() {
+    // Reload the page after a short delay
+    setTimeout(function() {
+      location.reload();
+    }, 500); // wait 500ms (0.5s) before reloading
+  }, 500); // wait 500ms (0.5s) for the fade-out transition to finish
+  */
 }
+
+
+
 function displaySettings() {
   document.getElementById('settingscontainer').style.display = 'flex';
 }
+
+
+function resizeInput() {
+  var input = document.getElementById('twitchname');
+  input.style.width = ((input.value.length + 4) * 8) + 'px';
+}
+
+
+
+function validateInput() {
+  var input = document.getElementById('twitchname');
+  var value = input.value.trim();
+  console.log("here:             " + value);
+  settings.streamername = value;
+  if (value === '') {
+    input.value = 'Enter streamer name here';
+    input.style.width = ((input.value.length + 4) * 8) + 'px';
+  }else{
+    fs.writeFile('streamername.txt', settings.streamername, (err) => {
+      if (err) throw err;
+        console.log('Streamer name saved to file');
+      });
+  }
+
+}
+
+//enterkey for input
+function handleKeyDown(event) {
+  if (event.key === 'Enter') {
+    event.target.blur();
+  }
+}
+
+
 
 //sounds
 function playHoverSound() {

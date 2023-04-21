@@ -5,13 +5,13 @@
   </head>
   <body>
     <canvas id="canvas"></canvas>
-    <script src="./scripts/script.js"></script>
+    <script defer src="./scripts/script.js"></script>
     <script src="./scripts/utils.js"></script>
     <audio id="hoverAudio" src="./assets/sounds/hover.wav" preload="auto"></audio>
     <audio id="clickAudio" src="./assets/sounds/click.wav" preload="auto"></audio>
-
     <div class="main-ui" id="mainui">
-        <img id="settings" src='./assets/settings/button_selected.png' onclick="playClickSound(); displaySettings()"></img>
+        <img id="settings" src='./assets/settings/settingsbutton.png' onclick="playClickSound(); displaySettings()" onmouseover="playHoverSound()"></img>
+        <input type=text id="twitchname" value="Enter streamer name here" oninput="resizeInput()" onclick="playClickSound()" onmouseover="playHoverSound()" onblur="validateInput(); playClickSound()">
     </div>
 
 

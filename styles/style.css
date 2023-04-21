@@ -51,6 +51,8 @@ canvas {
 }
 
 
+
+
 .sizebuttons {
   display: flex;
   justify-content: center;
@@ -294,4 +296,56 @@ canvas {
 
 #applybutton:hover{
   content: url('../assets/settings/applybtnonhover.png');
+}
+
+#settings{
+  user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    transform: scale3d(1, 1, 1) rotate(0deg);
+    transition: transform 0.2s ease-in-out;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+
+
+}
+#settings:hover {
+  transform: scale3d(1.2, 1.2, 1.2);
+}
+
+#twitchname {
+  display: inline-block;
+  width: 200px;
+  transform: translateY(-135%);
+  font-family: "pophappy", sans-serif !important;
+  color: #888888 !important;
+  border: 2px solid white;
+  border-radius: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-align: center;
+  transform: scale3d(1, 1, 1) translateY(-135%);
+  transition: transform 0.2s ease-in-out;
+}
+
+#twitchname:focus {
+  color: #000000 !important;
+  outline: none;
+}
+
+#twitchname:hover {
+  transform: scale3d(1.1, 1.1, 1.1) translateY(-135%);
+  transition: transform 0.2s ease-in-out;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
 }

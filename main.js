@@ -2,7 +2,6 @@ const { app, BrowserWindow } = require('electron');
 const path = require('path');
 const staticServer = require('./server');
 const apiServer = require('./TMI');
-
 let mainWindow;
 
 function createWindow() {
@@ -12,16 +11,21 @@ function createWindow() {
     title: 'Twitch Tank',
     icon: path.join(__dirname, '/assets/icon.png'),
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      contextIsolation: false
     }
   });
 
   mainWindow.maximize();
 
+
+
+
+
   // Remove default menus on macOS and Windows
   if (process.platform === 'darwin' || process.platform === 'win32') {
     const { Menu } = require('electron');
-    Menu.setApplicationMenu(null);
+    //Menu.setApplicationMenu(null);
   }
 
   staticServer.listen(3000, () => {

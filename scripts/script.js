@@ -1,3 +1,11 @@
+let test = window.settings_size
+console.log("MADE IT: " + test);
+
+
+
+
+
+
 let counter = 0;
     class Fish {
       constructor(x, y, width, height, speed, name, type) {
@@ -242,7 +250,6 @@ let counter = 0;
           .catch(error => console.error("mf: " + error));
 
     }, 1000);
-
 
 
 
