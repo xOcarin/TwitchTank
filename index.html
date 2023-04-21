@@ -6,16 +6,17 @@
   <body>
     <div class="maincontent">
       <img  src='./assets/logo.png' class="logo"></img>
-      <img  src='./assets/logbutton.png' class="logbutton" onClick="showLogin()"></img>
+      <div class="signupandlogin">
+        <img  src='./assets/logbuttontrans.png' class="logbutton" onClick="showLogin()"></img>
 
-      <div class="signup">
-      <p id="signup-button" onClick="showSignup()">Don't have an account? <u>Signup here.</u></p>
+
+        <p class="signup" onClick="showSignup()">Don't have an account? <u>Signup here.</u></p>
+        </div>
+
+        <a href="main.html">
+          <img src="./assets/logbutton.png" class="testbutton">
+        </a>
       </div>
-
-      <a href="main.html">
-        <img src="./assets/logbutton.png" class="testbutton">
-      </a>
-    </div>
 
 
     <canvas id="canvas"></canvas>
@@ -26,7 +27,7 @@
 
     <div class="login-container" id="login-container" style="display:none;">
       <form class="login-form" action="../phphandlers/login.php" method="post">
-        <label for="username">Username</label>
+        <label for="username">Twitch Tank Username</label>
         <input type="text" id="username" name="username">
         <label for="password">Password</label>
         <input type="password" id="password" name="password">

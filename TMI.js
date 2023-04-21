@@ -11,7 +11,7 @@ const client = new tmi.Client({
     secure: true,
     reconnect: true,
   },
-  channels: ['gaules'],
+  channels: ['connoreatspants'],
 });
 
 client.connect();
