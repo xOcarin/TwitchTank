@@ -1,10 +1,3 @@
-let test = window.settings_size
-console.log("MADE IT: " + test);
-
-
-
-
-
 
 let counter = 0;
     class Fish {
@@ -187,6 +180,9 @@ let counter = 0;
       }} //fish object
 
 
+
+
+
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
     let width = window.innerWidth;
@@ -202,54 +198,78 @@ let counter = 0;
     let firstLetter = " ";
     let type = "0"
 
-    setInterval(() => {
-        fetch('/viewers')
-          .then(response => response.json())
-          .then(data => {
+
+    const readSettingsFile = () => {
+      return new Promise((resolve, reject) => {
+        fs.readFile('settings.json', (err, data) => {
+          if (err) {
+            reject(err);
+          } else {
+            const settings = JSON.parse(data);
+            resolve(settings);
+          }
+        });
+      });
+    };
+
+    // Use the Promise to read the file and wait for it to complete
+    readSettingsFile()
+      .then(settings => {
+        setInterval(() => {
+            fetch('/viewers')
+              .then(response => response.json())
+              .then(data => {
 
 
-            enterfish = data.viewers;
+                enterfish = data.viewers;
 
-            console.log("current: " +  enterfish);
+                console.log("current: " +  enterfish);
 
-            enterfish.forEach((value) => {
-              if (!names.includes(value)) {
-                names.push(value);
-                firstLetter = value.charAt(0);
-                type = charToNum(firstLetter);
-                type = type % 6;
-
-
-
-                let xpos = Math.floor(Math.random() * (canvas.width - 100 + 1) + 100);
-                let ypos = Math.floor(Math.random() * (canvas.height - 100 + 1) + 100);
-                if(counter < 200){
-                allFish.push(new Fish(xpos, ypos, 100, 100, .75, value, type.toString()));
-                console.log("here: " + allFish.length);
-                counter++;
-              }
-              }
-            });
-
-            names.forEach((value) => {
-              if (names.includes(value) && !enterfish.includes(value)) {
-                const index = names.indexOf(value);
-                const fishdex = allFish.indexOf(value);
-                if (index !== -1) {
-                  //names.splice(index, 1);
-                  //death(value);
-                  removeFromArr(value);
-
-                }
-              }
-            });
+                enterfish.forEach((value) => {
+                  if (!names.includes(value)) {
+                    names.push(value);
+                    firstLetter = value.charAt(0);
+                    type = charToNum(firstLetter);
+                    type = type % 6;
 
 
 
-          })
-          .catch(error => console.error("mf: " + error));
+                    let xpos = Math.floor(Math.random() * (canvas.width - 100 + 1) + 100);
+                    let ypos = Math.floor(Math.random() * (canvas.height - 100 + 1) + 100);
+                    if(counter < 200){
+                    allFish.push(new Fish(xpos, ypos, settings.size * 50, settings.size * 50, .75, value, type.toString()));
+                    console.log("here: " + allFish.length);
+                    counter++;
+                  }
+                  }
+                });
 
-    }, 1000);
+                names.forEach((value) => {
+                  if (names.includes(value) && !enterfish.includes(value)) {
+                    const index = names.indexOf(value);
+                    const fishdex = allFish.indexOf(value);
+                    if (index !== -1) {
+                      //names.splice(index, 1);
+                      //death(value);
+                      removeFromArr(value);
+
+                    }
+                  }
+                });
+
+
+
+              })
+              .catch(error => console.error("mf: " + error));
+
+        }, 50);
+
+
+      })
+      .catch(err => {
+        console.error("Error reading settings file: " + err);
+      });
+
 
 
 

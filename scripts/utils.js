@@ -1,12 +1,12 @@
-
+const { app } = require('electron');
 
 const fs = require('fs');
 
 // Set the values of the settings variables
-let settings_size;
-let settings_counterstate;
-let settings_timeout;
-let settings_theme;
+let settings_size = 1;
+let settings_counterstate = true;
+let settings_timeout = 15;
+let settings_theme = 1;
 let settings_streamername;
 
 // Create an object with the settings variables
@@ -135,10 +135,9 @@ function acceptAndApply() {
   console.log("theme:" + settings_theme);
   console.log("timeout:" + settings_timeout);
   settings.size = settings_size;
-  settings.counter = settings_counterstate;
+  settings.counterstate = settings_counterstate;
   settings.theme = settings_theme;
   settings.timeout = settings_timeout
-  settings.streamername = settings_streamername
   const settingsJSON = JSON.stringify(settings);
 
   // Write the JSON string to a file named "settings.json"
@@ -146,7 +145,7 @@ function acceptAndApply() {
     if (err) throw err;
     console.log('Settings saved to file');
   });
-  /*
+
   document.body.classList.add('fade-out');
 
   // Wait for the fade-out transition to finish before reloading the page
@@ -156,7 +155,7 @@ function acceptAndApply() {
       location.reload();
     }, 500); // wait 500ms (0.5s) before reloading
   }, 500); // wait 500ms (0.5s) for the fade-out transition to finish
-  */
+
 }
 
 
@@ -186,6 +185,12 @@ function validateInput() {
       if (err) throw err;
         console.log('Streamer name saved to file');
       });
+      setTimeout(function() {
+        // Reload the page after a short delay
+        setTimeout(function() {
+          location.reload();
+        }, 500); // wait 500ms (0.5s) before reloading
+      }, 500); // wait 500ms (0.5s) for the fade-out transition to finish
   }
 
 }
