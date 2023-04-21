@@ -9,10 +9,24 @@ let client = null;
 let viewers = [];
 let displayNames = [];
 
+const lastActive = {};
+
+function handleMessage(channel, tags, message, self) {
+  const displayName = tags['display-name'];
+  console.log("dispalynames:" +displayNames);
+  console.log("viewers:" +viewers);
+  if (!displayNames.includes(displayName)) {
+    displayNames.push(displayName);
+  }
+  lastActive[displayName] = Date.now();
+}
+
 function startTmiClient(channel) {
   // Stop existing client if there is one
   if (client) {
+    client.removeListener('message', handleMessage)
     client.disconnect();
+    client.ws.close();
   }
 
   // Initialize the TMI client
@@ -30,15 +44,8 @@ function startTmiClient(channel) {
 
 
   // Handle incoming chat messages
-  const lastActive = {};
-  client.on('message', (channel, tags, message, self) => {
-    const displayName = tags['display-name'];
-    if (!displayNames.includes(displayName)) {
-      displayNames.push(displayName);
-    }
-    lastActive[displayName] = Date.now();
-    console.log(channel);
-  });
+  client.on('message', handleMessage);
+
 
   // Update the viewer list every 100ms
   setInterval(() => {
@@ -64,6 +71,7 @@ function startTmiClient(channel) {
   });
 }
 
+
 // Read the initial channel name from file and start the TMI client
 readFile('streamername.txt')
   .then(data => {
@@ -78,8 +86,9 @@ readFile('streamername.txt')
         .then(data => {
           const newChannel = data.toString();
           console.log('New channel:', newChannel);
-          client.disconnect();
-          viewers.length = 0;
+          //client.disconnect();
+          viewers = [];
+          displayNames = [];
           //displayNames.length = 0;
           startTmiClient(newChannel);
         })
