@@ -152,6 +152,14 @@ function acceptAndApply() {
   setTimeout(function() {
     // Reload the page after a short delay
     setTimeout(function() {
+      console.log("look:          " + settings.theme);
+      const canvas = document.getElementById('canvas');
+
+      if(settings.theme == 1){
+        
+      }else{
+
+      }
       location.reload();
     }, 500); // wait 500ms (0.5s) before reloading
   }, 500); // wait 500ms (0.5s) for the fade-out transition to finish

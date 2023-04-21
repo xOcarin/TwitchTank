@@ -68,11 +68,29 @@ function setCounterImg(settings) {
     }
 }
 
+function setTheme(settings) {
+
+  let x = settings.theme;
+  console.log("THE THEME SHOULD BE: " + x);
+  const canvas = document.getElementById('canvas');
+  if(settings.theme == 1){
+    canvas.style.backgroundImage = 'url(./assets/bg/realbg.png)';
+
+  }else{
+    canvas.style.backgroundImage = 'url(./assets/bg/pixelbg.png)';
+
+  }
+}
+
+
+
+
 readSettings()
   .then(settings => {
     // Call the functions that need the settings variables
     setSizeImg(settings);
     setCounterImg(settings);
+    setTheme(settings);
   })
   .catch(err => {
     console.error(err);

@@ -82,8 +82,8 @@ let counter = 0;
             this.frameHeight = 77;
             break;
           default:
-            this.imageL.src = 'assets/fish/angelL.png';
-            this.imageR.src = 'assets/fish/angelR.png';
+            this.imageL.src = 'assets/fish/Bass_spritesheet.png';
+            this.imageR.src = 'assets/fish/Bass_spritesheetR.png';
             this.numFrames = 9;
             this.frameWidth = 200;
             this.frameHeight = 200;
@@ -223,7 +223,7 @@ let counter = 0;
 
                 enterfish = data.viewers;
 
-                console.log("current: " +  enterfish);
+                //console.log("current: " +  enterfish);
 
                 enterfish.forEach((value) => {
                   if (!names.includes(value)) {

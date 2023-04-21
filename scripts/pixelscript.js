@@ -1,5 +1,5 @@
 
-let counter = 0;
+let counterp = 0;
     class Fish {
       constructor(x, y, width, height, speed, name, type) {
         this.image = new Image();
@@ -221,18 +221,15 @@ let counter = 0;
                 enterfish.forEach((value) => {
                   if (!names.includes(value)) {
                     names.push(value);
-                    firstLetter = value.charAt(0);
-                    type = charToNum(firstLetter);
-                    type = type % 6;
-
+                    let type = Math.floor(Math.random() * 6) + 1;
 
 
                     let xpos = Math.floor(Math.random() * (canvas.width - 100 + 1) + 100);
                     let ypos = Math.floor(Math.random() * (canvas.height - 100 + 1) + 100);
-                    if(counter < 200){
+                    if(counterp < 200){
                     allFish.push(new Fish(xpos, ypos, (canvas.width * 0.05) * settings.size/2, (canvas.height * 0.05) * settings.size/2, .75, value, type.toString()));
                     //console.log("here: " + allFish.length);
-                    counter++;
+                    counterp++;
                   }
                   }
                 });
