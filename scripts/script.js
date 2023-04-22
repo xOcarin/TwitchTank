@@ -159,7 +159,7 @@ let counter = 0;
             console.log(this.loopVar);
             this.loopVar += .25;
             }
-
+                this.checkH = true;
                 ctx.save();
                 ctx.scale(1, -1); // Flip vertically
                 //ctx.drawImage(this.image, 0, 0, sourceWidth, sourceHeight, this.deathx, -this.deathy, this.width, this.height); // draw the image
@@ -237,6 +237,7 @@ let counter = 0;
         }
 
         //if direction changes, change movement direction/image
+        if(this.isAlive){
         if (this.checkH === true) {
           this.x -= this.speed;
           this.image = this.imageL;
@@ -256,6 +257,7 @@ let counter = 0;
             this.y -= this.speed;
           }
         }
+      }
       }} //fish object
 
 

@@ -69,13 +69,14 @@ function startTmiClient(channel) {
     viewers = displayNames.slice();
     const currentTime = Date.now();
     Object.keys(lastActive).forEach((displayName) => {
-      if (currentTime - lastActive[displayName] > (settings.timeout * 60000)) {
+      if (currentTime - lastActive[displayName] > (settings.timeout * 6000)) {
         delete lastActive[displayName];
         const index = displayNames.indexOf(displayName);
         if (index !== -1) {
           displayNames.splice(index, 1);
           viewers = displayNames.slice();
           console.log("chesdasd: " + settings.channel);
+
         }
       }
     });
