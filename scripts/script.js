@@ -99,7 +99,8 @@ let counter = 0;
               this.frameWidth = 200;
               this.frameHeight = 200;
             }
-          case "6":
+            break;
+          case "5":
             if(this.theme == 1){
               this.imageL.src = 'assets/fish/angelL.png';
               this.imageR.src = 'assets/fish/angelR.png';
@@ -109,11 +110,12 @@ let counter = 0;
             }else{
               this.imageL.src = 'assets/fish/fish_spritesheet.png';
               this.imageR.src = 'assets/fish/fish_spritesheetR.png';
-              this.numFrames = 60;
+              this.numFrames = 45;
               this.frameWidth = 200;
               this.frameHeight = 200;
             }
-          default:
+            break;
+          case "6":
             if(this.theme == 1){
               this.imageL.src = 'assets/fish/angelL.png';
               this.imageR.src = 'assets/fish/angelR.png';
@@ -127,6 +129,7 @@ let counter = 0;
               this.frameWidth = 200;
               this.frameHeight = 200;
             }
+            break;
       }
 
 
@@ -330,10 +333,18 @@ let counter = 0;
       else //for testing purposes
       {
         allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Steve", "1", 2));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Chauncy", "2"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Frank", "3"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Patricia", "7"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "flippy dippy", "5"));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "carl", "2", 2));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "deb", "3", 2));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "fucker", "4", 2));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "mongo", "5", 2));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "cuck", "6", 2));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "sad", "1", 1));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Se", "2", 1));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "worsee", "3", 1));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Swes", "4", 1));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Sfsddas", "5", 1));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "hug", "6", 1));
+
       }
 }
 
