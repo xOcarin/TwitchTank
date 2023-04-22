@@ -160,10 +160,16 @@ function pixelthemeOnClick() {
   settings_theme = 2;
 }
 
+function setTimeoutInput() {
+  var input = document.getElementById('timeoutform');
+  var value = input.value.trim();
+  settings_timeout = value;
+}
+
 function acceptAndApply() {
   document.getElementById('settingscontainer').style.display = 'none';
   // Create an object with the settings variables
-
+  setTimeoutInput();
   console.log("size:" + settings_size);
   console.log("counter:" + settings_counterstate);
   console.log("theme:" + settings_theme);
@@ -173,22 +179,23 @@ function acceptAndApply() {
   settings.theme = settings_theme;
   settings.timeout = settings_timeout;
   const settingsJSON = JSON.stringify(settings);
-  console.log("FIN:          " + settings.size);
-  console.log("FIN:          " + settings.size);
-  console.log("FIN:          " + settings.size);
-  console.log("FIN:          " + settings.size);
-  console.log("FIN:          " + settings.size);
-  console.log("FIN:          " + settings.size);
-  console.log("FIN:          " + settings.size);
-  console.log("FIN:          " + settings.size);
-  console.log("FIN:          " + settings.size);
-  console.log("FIN:          " + settings.size);
-  console.log("FIN:          " + settings.size);
+  console.log("FIN:          " + settings.timeout);
+  console.log("FIN:          " + settings.timeout);
+  console.log("FIN:          " + settings.timeout);
+  console.log("FIN:          " + settings.timeout);
+  console.log("FIN:          " + settings.timeout);
+  console.log("FIN:          " + settings.timeout);
+  console.log("FIN:          " + settings.timeout);
+  console.log("FIN:          " + settings.timeout);
+  console.log("FIN:          " + settings.timeout);
+  console.log("FIN:          " + settings.timeout);
+  console.log("FIN:          " + settings.timeout);
 
   // Write the JSON string to a file named "settings.json"
   fs.writeFile('settings.json', settingsJSON, (err) => {
     if (err) throw err;
     console.log('Settings saved to file');
+    //location.reload();
   });
 
   document.body.classList.add('fade-out');
@@ -197,8 +204,6 @@ function acceptAndApply() {
   setTimeout(function() {
     // Reload the page after a short delay
     setTimeout(function() {
-      console.log("look:          " + settings.theme);
-      const canvas = document.getElementById('canvas');
       location.reload();
     }, 500); // wait 500ms (0.5s) before reloading
   }, 500); // wait 500ms (0.5s) for the fade-out transition to finish

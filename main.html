@@ -14,6 +14,7 @@
         <img id="settings" src='./assets/settings/settingsbutton.png' onclick="playClickSound(); displaySettings()" onmouseover="playHoverSound()" ></img>
         <input type=text id="twitchname" value="Enter streamer name here" oninput="resizeInput()" onclick="playClickSound(); clearDefaultText();   showConfirm()" onmouseover="playHoverSound()">
         <img id="confirm" src='./assets/settings/confirm.png' onclick="playClickSound(); ConfirmClicked() " onmouseover="playHoverSound()" style="display: none"></img>
+        <div id="counter">0</div>
     </div>
 
 
@@ -39,7 +40,7 @@
 
         <img id="timeoutheader" src='./assets/settings/timeout_header.png'></img>
         <input type="number" min="1" max="30" id="timeoutform" value="15" onblur="restrictTimeoutInput()"> </img>
-        <p id="timeoutchoice">1-30 minutes</p>
+        <p id="timeoutchoice" >1-30 minutes</p>
 
         <img id="themeheader" src='./assets/settings/theme_header.png'></img>
         <div class="themes">

@@ -47,23 +47,38 @@ function startTmiClient(channel) {
   client.on('message', handleMessage);
 
 
-  // Update the viewer list every 100ms
+  // Read the settings from file
+  // Read the settings from file
+  let settings = require('./settings.json');
+
   setInterval(() => {
+    delete require.cache[require.resolve('./settings.json')];
+    settings = require('./settings.json');
+    console.log("del:" + settings.timeout);
+  }, 1000);
+
+  // Update the viewer list every `settings.timeout` milliseconds
+  setInterval(() => {
+    console.log("in:" + settings.timeout);
+    console.log("v:" + viewers);
+    console.log("d:" + displayNames);
     viewers = displayNames.slice();
     const currentTime = Date.now();
     Object.keys(lastActive).forEach((displayName) => {
-      if (currentTime - lastActive[displayName] > 900000) {
+      if (currentTime - lastActive[displayName] > (settings.timeout * 600)) {
         delete lastActive[displayName];
         const index = displayNames.indexOf(displayName);
         if (index !== -1) {
           displayNames.splice(index, 1);
           viewers = displayNames.slice();
-          console.log(channel);
+          console.log(settings.channel);
         }
       }
     });
-    //console.log('Viewers:', Array.from(viewers));
   }, 100);
+
+
+
 
   // Serve the viewer list via an HTTP endpoint
   app.get('/viewers', (req, res) => {

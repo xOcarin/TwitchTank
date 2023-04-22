@@ -141,6 +141,10 @@ let counter = 0;
         if(!this.isAlive){
             ctx.drawImage(this.image, 0, 0, sourceWidth, sourceHeight, this.deathx, this.deathy, this.width, this.height);
             this.deathy = this.deathy - 1;
+            if(this.deathy < 0){
+              console.log(this.deathy);
+              removeFromArrREAL(this.name);
+            }
           if(this.swayspeed < 25){
             this.deathx = this.deathx - this.swaydistance;
             this.swayspeed++;
@@ -265,24 +269,20 @@ let counter = 0;
                 enterfish = data.viewers;
 
                 //console.log("current: " +  enterfish);
-
+                console.log("names :" +names);
                 enterfish.forEach((value) => {
                   if (!names.includes(value)) {
                     names.push(value);
-                    firstLetter = value.charAt(0);
-                    type = charToNum(firstLetter);
-                    type = type % 6;
-
-
+                    let type = Math.floor(Math.random() * 6) + 1;
 
                     let xpos = Math.floor(Math.random() * (canvas.width - 100 + 1) + 100);
                     let ypos = Math.floor(Math.random() * (canvas.height - 100 + 1) + 100);
-                    if(counter < 200){
-                      console.log("theme: " + settings.theme);
+
+                    console.log("theme: " + settings.theme);
                     allFish.push(new Fish(xpos, ypos, settings.size * 50, settings.size * 50, .75, value, type.toString(), settings.theme));
                     console.log("here: " + allFish.length);
                     counter++;
-                  }
+
                   }
                 });
 
@@ -291,9 +291,10 @@ let counter = 0;
                     const index = names.indexOf(value);
                     const fishdex = allFish.indexOf(value);
                     if (index !== -1) {
-                      //names.splice(index, 1);
+                      names.splice(index, 1);
                       //death(value);
                       removeFromArr(value);
+                      counter--;
 
                     }
                   }
@@ -362,8 +363,13 @@ let counter = 0;
         fish.animate();
       });
     }
+    // Get the counter element by its ID
+    const counterElement = document.getElementById("counter");
+
+    // Update the text value of the counter element
 
     const moveFishInterval = setInterval(() => {
+      counterElement.textContent = counter;
       allFish.forEach((fish) => {
         fish.move(canvas.width, canvas.height);
       });
@@ -399,6 +405,20 @@ function removeFromArr(name){
       //allFish.splice(i, 1);
       death(allFish[i]);
       return "Fish Removed";
+    }
+  }
+}
+
+function removeFromArrREAL(name){
+  console.log("HIT");
+  for (i in allFish)
+  {
+    console.log("HIT2");
+    if(allFish[i].name == name)
+    {
+      console.log("HIT3");
+      allFish.splice(i, 1);
+
     }
   }
 }

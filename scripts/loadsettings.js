@@ -17,10 +17,6 @@ readStreamerName('streamername.txt')
   .then((data) => {
     console.log(`File contents: ${data}`);
     document.getElementById('twitchname').value = data;
-
-
-
-    // Use the data here
   })
   .catch((err) => {
     console.error(err);
@@ -140,7 +136,22 @@ function setThemeImg(settings) {
 }
 
 
+function setTimeoutValue(settings) {
+  let x = settings.timeout;
+  document.getElementById('timeoutform').value = x;
 
+}
+
+function setCounter(settings) {
+  let x = settings.counterstate;
+  console.log("whats the settings:" + x);
+  if(x == false){
+    console.log("MADE IT" + x);
+    document.getElementById('counter').style.display = 'none';
+  }else{
+    document.getElementById('counter').style.position = 'flex';
+  }
+}
 
 readSettings()
   .then(settings => {
@@ -149,6 +160,8 @@ readSettings()
     setCounterImg(settings);
     setTheme(settings);
     setThemeImg(settings);
+    setTimeoutValue(settings);
+    setCounter(settings);
   })
   .catch(err => {
     console.error(err);

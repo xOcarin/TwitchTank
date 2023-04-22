@@ -334,6 +334,12 @@ canvas {
 }
 
 #twitchname {
+  user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
   display: inline-block;
   width: 200px;
   transform: translateY(-135%);
@@ -366,4 +372,25 @@ canvas {
 .fade-in {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
+}
+
+#counter {
+  user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+  transform: scale(2.5);
+  opacity: .5;
+  position: fixed;
+  display: flex;
+  top: 0;
+  right: 0;
+  margin: 20px;
+  font-size: 24px;
+  color: white;
+  font-family: "pophappy", sans-serif !important;
+  padding: 10px;
 }
