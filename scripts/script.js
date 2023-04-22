@@ -27,6 +27,13 @@ let counter = 0;
         this.isAlive = true;
         this.deathx = 0;
         this.deathy = 0;
+<<<<<<< Updated upstream
+=======
+        this.swaydistance = -1;
+        this.swayspeed = 0;
+        this.theme = theme;
+		this.loopVar = 0;
+>>>>>>> Stashed changes
       }
 
 
@@ -94,9 +101,50 @@ let counter = 0;
           const sourceHeight = this.frameHeight;
           //ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+<<<<<<< Updated upstream
         if(!this.isAlive){
             ctx.drawImage(this.image, 0, 0, sourceWidth, sourceHeight, this.deathx, this.deathy, this.width, this.height);
           }
+=======
+
+        if(!this.isAlive)
+		{            
+			if (this.loopVar < 180)
+			{
+			ctx.save(); // save the current canvas state
+			ctx.translate(this.deathx + this.width / 2, this.deathy + this.height / 2); // translate to the center of the image
+			ctx.rotate(Math.PI / this.loopVar); // rotate by 45 degrees (in radians)
+			ctx.drawImage(this.image, 0, 0, sourceWidth, sourceHeight, -this.width / 2, -this.height / 2, this.width, this.height); // draw the image
+			ctx.restore(); // restore the canvas state to its previous state
+			this.loopVar++;
+			}
+			else
+			{
+				ctx.save();
+				ctx.translate(this.deathx + this.width / 2, this.deathy + this.height / 2); // translate to the center of the image
+				ctx.rotate(Math.PI / 180); // rotate by 45 degrees (in radians)
+				ctx.drawImage(this.image, 0, 0, sourceWidth, sourceHeight, this.deathx, this.deathy, this.width, this.height);
+				this.deathy = this.deathy - 1;
+            	if(this.deathy < - 200)
+				{
+              		console.log(this.deathy);
+              		removeFromArrREAL(this.name);			  
+            	}
+          		if(this.swayspeed < 25)
+				{
+            		this.deathx = this.deathx - this.swaydistance;
+            		this.swayspeed++;
+            	}
+          		else
+				{
+            		this.swaydistance = (this.swaydistance * -1);
+            		this.swayspeed = 0;
+          		}
+			}	
+            
+          }
+
+>>>>>>> Stashed changes
         if(this.isAlive){
           ctx.drawImage(this.image, sourceX, sourceY, sourceWidth, sourceHeight, this.x, this.y, this.width, this.height);
 
