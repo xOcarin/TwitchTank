@@ -31,6 +31,8 @@ let counter = 0;
         this.swaydistance = -1;
         this.swayspeed = 0;
         this.theme = theme;
+        this.loopVar = 0;
+        this.deathspinchance = Math.floor(Math.random() * 2) + 1;
       }
 
 
@@ -141,21 +143,45 @@ let counter = 0;
           //ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 
-        if(!this.isAlive){
-            ctx.drawImage(this.image, 0, 0, sourceWidth, sourceHeight, this.deathx, this.deathy, this.width, this.height);
-            this.deathy = this.deathy - 1;
-            if(this.deathy < - 200){
-              console.log(this.deathy);
-              removeFromArrREAL(this.name);
+          if(!this.isAlive)
+        {
+            if (this.deathy > -200)
+            {
+            ctx.save(); // save the current canvas state
+            ctx.translate(this.deathx + this.width / 2, this.deathy + this.height / 2);
+            if(this.deathspinchance == 1){
+              ctx.rotate(this.loopVar * Math.PI / -180);
+            }else{
+              ctx.rotate(this.loopVar * Math.PI / 180);
             }
-          if(this.swayspeed < 25){
-            this.deathx = this.deathx - this.swaydistance;
-            this.swayspeed++;
+            ctx.drawImage(this.image, 0, 0, 200, 200, -this.width / 2, -this.height / 2, this.width, this.height); // draw the image
+            ctx.restore(); // restore the canvas state to its previous state
+            console.log(this.loopVar);
+            this.loopVar += .25;
             }
-          else{
-            this.swaydistance = (this.swaydistance * -1);
-            this.swayspeed = 0;
-          }
+
+                ctx.save();
+                ctx.scale(1, -1); // Flip vertically
+                //ctx.drawImage(this.image, 0, 0, sourceWidth, sourceHeight, this.deathx, -this.deathy, this.width, this.height); // draw the image
+                ctx.restore();
+                this.deathy = this.deathy - 1;
+                if(this.deathy < -200)
+                {
+                      console.log("deathy: " + this.deathy);
+                      removeFromArrREAL(this.name);
+                }
+                  if(this.swayspeed < 25)
+                {
+                    //this.deathx = this.deathx - this.swaydistance;
+                    //this.swayspeed++;
+                }
+                  else
+                {
+                    //this.swaydistance = (this.swaydistance * -1);
+                    //this.swayspeed = 0;
+                  }
+
+
           }
 
         if(this.isAlive){
@@ -166,9 +192,14 @@ let counter = 0;
 
           // adjust the x-coordinate so the text is centered on the fish
           const textX = this.x + (this.width / 2) - (textWidth / 2);
-
+          let textsize = this.width * .15;
           // draw the text
-          ctx.font = "15px 'pophappy'";
+          if(this.width > 75){
+          textsize = this.width * .15;
+        }else{
+          textsize = this.width * .28;
+        }
+          ctx.font = `${textsize}px 'pophappy'`;
           ctx.fillStyle = "white";
           ctx.fillText(this.name, textX, this.y);
 
@@ -332,7 +363,7 @@ let counter = 0;
       }
       else //for testing purposes
       {
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Steve", "1", 2));
+        /*allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Steve", "1", 2));
         allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "carl", "2", 2));
         allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "deb", "3", 2));
         allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "fucker", "4", 2));
@@ -344,6 +375,7 @@ let counter = 0;
         allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Swes", "4", 1));
         allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Sfsddas", "5", 1));
         allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "hug", "6", 1));
+        */
 
       }
 }
