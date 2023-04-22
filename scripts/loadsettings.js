@@ -82,6 +82,32 @@ function setTheme(settings) {
   }
 }
 
+function setThemeImg(settings) {
+  // Use the settings variables
+  let x = settings.theme;
+  const theme1 = document.getElementById("theme1");
+  const theme2 = document.getElementById("theme2");
+
+
+  const theme1selected = new Image();
+  theme1selected.src = './assets/settings/oceantheme_selected.png';
+  const theme2selected = new Image();
+  theme2selected.src = './assets/settings/pixeltheme_selected.png';
+
+  console.log("THIS ONE: " + x);
+  if(x == 1){
+    console.log("here: " + x);
+      theme1selected.onload = function() {
+        theme1.src = theme1selected.src;
+      };
+  }else if (x == 2) {
+    console.log("hered: " + x);
+      theme2selected.onload = function() {
+         theme2.src = theme2selected.src;
+      };
+  }
+}
+
 
 
 
@@ -91,6 +117,7 @@ readSettings()
     setSizeImg(settings);
     setCounterImg(settings);
     setTheme(settings);
+    setThemeImg(settings);
   })
   .catch(err => {
     console.error(err);

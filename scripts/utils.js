@@ -22,6 +22,40 @@ let settings = {
 
 
 
+function readSettings() {
+  return new Promise((resolve, reject) => {
+    fs.readFile('settings.json', 'utf8', (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        const settings = JSON.parse(data);
+        globalSettings.size = settings.size;
+        globalSettings.counterstate = settings.counterstate;
+        globalSettings.timeout = settings.timeout;
+        globalSettings.theme = settings.theme;
+        globalSettings.streamername = settings.streamername;
+        resolve(settings);
+      }
+    });
+  });
+}
+
+readSettings()
+  .then(settings => {
+    settings_size = globalSettings.size;
+    settings_counterstate = globalSettings.counterstate;
+    settings_timeout = globalSettings.timeout;
+    settings_theme = globalSettings.theme;
+    console.log("CHECKING1: " + globalSettings.size);
+    console.log("CHECKING2: " + settings.size);
+    console.log("CHECKING3: " + settings_size);
+  })
+  .catch(err => {
+    console.error(err);
+  });
+
+
+
 function showLogin() {
   document.getElementById('login-container').style.display = 'block';
   document.getElementById('leftID').style.display = 'none';
@@ -139,6 +173,17 @@ function acceptAndApply() {
   settings.theme = settings_theme;
   settings.timeout = settings_timeout
   const settingsJSON = JSON.stringify(settings);
+  console.log("FIN:          " + settings.size);
+  console.log("FIN:          " + settings.size);
+  console.log("FIN:          " + settings.size);
+  console.log("FIN:          " + settings.size);
+  console.log("FIN:          " + settings.size);
+  console.log("FIN:          " + settings.size);
+  console.log("FIN:          " + settings.size);
+  console.log("FIN:          " + settings.size);
+  console.log("FIN:          " + settings.size);
+  console.log("FIN:          " + settings.size);
+  console.log("FIN:          " + settings.size);
 
   // Write the JSON string to a file named "settings.json"
   fs.writeFile('settings.json', settingsJSON, (err) => {
@@ -154,12 +199,6 @@ function acceptAndApply() {
     setTimeout(function() {
       console.log("look:          " + settings.theme);
       const canvas = document.getElementById('canvas');
-
-      if(settings.theme == 1){
-        
-      }else{
-
-      }
       location.reload();
     }, 500); // wait 500ms (0.5s) before reloading
   }, 500); // wait 500ms (0.5s) for the fade-out transition to finish

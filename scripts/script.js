@@ -1,7 +1,7 @@
 
 let counter = 0;
     class Fish {
-      constructor(x, y, width, height, speed, name, type) {
+      constructor(x, y, width, height, speed, name, type, theme) {
         this.image = new Image();
         this.imageR = new Image();
         this.imageL = new Image();
@@ -30,6 +30,7 @@ let counter = 0;
         this.deathy = 0;
         this.swaydistance = -1;
         this.swayspeed = 0;
+        this.theme = theme;
       }
 
 
@@ -40,53 +41,92 @@ let counter = 0;
 
         switch (this.type) {
           case "1":
-            this.imageL.src = 'assets/fish/angelL.png';
-            this.imageR.src = 'assets/fish/angelR.png';
-            this.numFrames = 26;
-            this.frameWidth = 200;
-            this.frameHeight = 200;
+            if(this.theme == 1){
+              this.imageL.src = 'assets/fish/angelL.png';
+              this.imageR.src = 'assets/fish/angelR.png';
+              this.numFrames = 26;
+              this.frameWidth = 200;
+              this.frameHeight = 200;
+            }else{
+              this.imageL.src = 'assets/fish/Bass_spritesheet.png';
+              this.imageR.src = 'assets/fish/Bass_spritesheetR.png';
+              this.numFrames = 60;
+              this.frameWidth = 200;
+              this.frameHeight = 200;
+            }
             break;
           case "2":
-            this.imageL.src = 'assets/fish/batL.png';
-            this.imageR.src = 'assets/fish/batR.png';
-            this.numFrames = 26;
-            this.frameWidth = 200;
-            this.frameHeight = 200;
+            if(this.theme == 1){
+              this.imageL.src = 'assets/fish/batL.png';
+              this.imageR.src = 'assets/fish/batR.png';
+              this.numFrames = 26;
+              this.frameWidth = 200;
+              this.frameHeight = 200;
+            }else{
+              this.imageL.src = 'assets/fish/Beepo_Bass_spritesheetL.png';
+              this.imageR.src = 'assets/fish/Beepo_Bass_spritesheetR.png';
+              this.numFrames = 60;
+              this.frameWidth = 200;
+              this.frameHeight = 200;
+            }
             break;
           case "3":
-            this.imageL.src = 'assets/fish/longnoseL.png';
-            this.imageR.src = 'assets/fish/longnoseR.png';
-            this.numFrames = 26;
-            this.frameWidth = 200;
-            this.frameHeight = 200;
+            if(this.theme == 1){
+              this.imageL.src = 'assets/fish/longnoseL.png';
+              this.imageR.src = 'assets/fish/longnoseR.png';
+              this.numFrames = 26;
+              this.frameWidth = 200;
+              this.frameHeight = 200;
+            }else{
+              this.imageL.src = 'assets/fish/Sherbert_Bass_spritesheetL.png';
+              this.imageR.src = 'assets/fish/Sherbert_Bass_spritesheetR.png';
+              this.numFrames = 60;
+              this.frameWidth = 200;
+              this.frameHeight = 200;
+            }
             break;
           case "4":
-            this.imageL.src = 'assets/fish/unicornL.png';
-            this.imageR.src = 'assets/fish/unicornR.png';
-            this.numFrames = 26;
-            this.frameWidth = 200;
-            this.frameHeight = 200;
-            break;
-          case "5":
-            this.imageL.src = 'assets/fish/angel_deadL.png';
-            this.imageR.src = 'assets/fish/angel_deadR.png';
-            this.numFrames = 30;
-            this.frameWidth = 200;
-            this.frameHeight = 200;
-            break;
+            if(this.theme == 1){
+              this.imageL.src = 'assets/fish/unicornL.png';
+              this.imageR.src = 'assets/fish/unicornR.png';
+              this.numFrames = 26;
+              this.frameWidth = 200;
+              this.frameHeight = 200;
+            }else{
+              this.imageL.src = 'assets/fish/Uber_Bass_spritesheetL.png';
+              this.imageR.src = 'assets/fish/Uber_Bass_spritesheetR.png';
+              this.numFrames = 60;
+              this.frameWidth = 200;
+              this.frameHeight = 200;
+            }
           case "6":
-            this.imageL.src = 'assets/fish/Sherbert_Bass_spritesheetL.png';
-            this.imageR.src = 'assets/fish/Sherbert_Bass_spritesheetR.png';
-            this.numFrames = 15;
-            this.frameWidth = 200;
-            this.frameHeight = 77;
-            break;
+            if(this.theme == 1){
+              this.imageL.src = 'assets/fish/angelL.png';
+              this.imageR.src = 'assets/fish/angelR.png';
+              this.numFrames = 26;
+              this.frameWidth = 200;
+              this.frameHeight = 200;
+            }else{
+              this.imageL.src = 'assets/fish/fish_spritesheet.png';
+              this.imageR.src = 'assets/fish/fish_spritesheetR.png';
+              this.numFrames = 60;
+              this.frameWidth = 200;
+              this.frameHeight = 200;
+            }
           default:
-            this.imageL.src = 'assets/fish/Bass_spritesheet.png';
-            this.imageR.src = 'assets/fish/Bass_spritesheetR.png';
-            this.numFrames = 9;
-            this.frameWidth = 200;
-            this.frameHeight = 200;
+            if(this.theme == 1){
+              this.imageL.src = 'assets/fish/angelL.png';
+              this.imageR.src = 'assets/fish/angelR.png';
+              this.numFrames = 26;
+              this.frameWidth = 200;
+              this.frameHeight = 200;
+            }else{
+              this.imageL.src = 'assets/fish/Bass_spritesheet.png';
+              this.imageR.src = 'assets/fish/Bass_spritesheetR.png';
+              this.numFrames = 60;
+              this.frameWidth = 200;
+              this.frameHeight = 200;
+            }
       }
 
 
@@ -110,6 +150,7 @@ let counter = 0;
             this.swayspeed = 0;
           }
           }
+
         if(this.isAlive){
           ctx.drawImage(this.image, sourceX, sourceY, sourceWidth, sourceHeight, this.x, this.y, this.width, this.height);
 
@@ -237,7 +278,8 @@ let counter = 0;
                     let xpos = Math.floor(Math.random() * (canvas.width - 100 + 1) + 100);
                     let ypos = Math.floor(Math.random() * (canvas.height - 100 + 1) + 100);
                     if(counter < 200){
-                    allFish.push(new Fish(xpos, ypos, settings.size * 50, settings.size * 50, .75, value, type.toString()));
+                      console.log("theme: " + settings.theme);
+                    allFish.push(new Fish(xpos, ypos, settings.size * 50, settings.size * 50, .75, value, type.toString(), settings.theme));
                     console.log("here: " + allFish.length);
                     counter++;
                   }
@@ -286,10 +328,10 @@ let counter = 0;
       }
       else //for testing purposes
       {
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Steve", "1"));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Steve", "1", 2));
         allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Chauncy", "2"));
         allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Frank", "3"));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Patricia", "4"));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Patricia", "7"));
         allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "flippy dippy", "5"));
       }
 }
