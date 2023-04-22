@@ -13,8 +13,8 @@ const lastActive = {};
 
 function handleMessage(channel, tags, message, self) {
   const displayName = tags['display-name'];
-  console.log("dispalynames:" +displayNames);
-  console.log("viewers:" +viewers);
+  //console.log("dispalynames:" +displayNames);
+  //console.log("viewers:" +viewers);
   if (!displayNames.includes(displayName)) {
     displayNames.push(displayName);
   }
@@ -45,6 +45,10 @@ function startTmiClient(channel) {
 
   // Handle incoming chat messages
   client.on('message', handleMessage);
+  client.on('subscription', (channel, username, methods, message, userstate) => {
+  console.log("SOMEONE SUBBED!");
+  console.log(`${username} just subscribed to ${channel}`);
+  });
 
 
   // Read the settings from file
@@ -54,14 +58,14 @@ function startTmiClient(channel) {
   setInterval(() => {
     delete require.cache[require.resolve('./settings.json')];
     settings = require('./settings.json');
-    console.log("del:" + settings.timeout);
+    //console.log("del:" + settings.timeout);
   }, 1000);
 
   // Update the viewer list every `settings.timeout` milliseconds
   setInterval(() => {
-    console.log("in:" + settings.timeout);
-    console.log("v:" + viewers);
-    console.log("d:" + displayNames);
+    //console.log("in:" + settings.timeout);
+    //console.log("v:" + viewers);
+    //console.log("d:" + displayNames);
     viewers = displayNames.slice();
     const currentTime = Date.now();
     Object.keys(lastActive).forEach((displayName) => {
@@ -71,7 +75,7 @@ function startTmiClient(channel) {
         if (index !== -1) {
           displayNames.splice(index, 1);
           viewers = displayNames.slice();
-          console.log(settings.channel);
+          console.log("chesdasd: " + settings.channel);
         }
       }
     });
