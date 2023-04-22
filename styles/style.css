@@ -315,6 +315,24 @@ canvas {
   transform: scale3d(1.2, 1.2, 1.2);
 }
 
+
+#confirm{
+  user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    transform: scale3d(1, 1, 1) rotate(0deg)  translateY(-40%) scale(.5);
+    transition: transform 0.2s ease-in-out;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+
+
+}
+#confirm:hover {
+  transform: scale3d(.7, .7, .7) translateY(-60%);
+}
+
 #twitchname {
   display: inline-block;
   width: 200px;
@@ -326,7 +344,7 @@ canvas {
   box-sizing: border-box;
   overflow: hidden;
   text-align: center;
-  transform: scale3d(1, 1, 1) translateY(-135%);
+  transform: scale3d(1, 1, 1) translateY(-150%);
   transition: transform 0.2s ease-in-out;
 }
 

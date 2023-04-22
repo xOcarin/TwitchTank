@@ -171,7 +171,7 @@ function acceptAndApply() {
   settings.size = settings_size;
   settings.counterstate = settings_counterstate;
   settings.theme = settings_theme;
-  settings.timeout = settings_timeout
+  settings.timeout = settings_timeout;
   const settingsJSON = JSON.stringify(settings);
   console.log("FIN:          " + settings.size);
   console.log("FIN:          " + settings.size);
@@ -242,14 +242,36 @@ function validateInput() {
 
 }
 
-//enterkey for input
-function handleKeyDown(event) {
-  if (event.key === 'Enter') {
-    event.target.blur();
+
+window.onload = function() {
+  document.getElementById('twitchname').addEventListener('keypress', handleKeyPress);
+
+  function handleKeyPress(event) {
+    if (event.keyCode === 13) {
+      console.log("enter pressed");
+      event.target.dispatchEvent(new Event('blur'));
+      validateInput();
+      playClickSound();
+    }
   }
+};
+
+function clearDefaultText() {
+    var input = document.getElementById('twitchname');
+    if (input.value === "Enter streamer name here") {
+      input.value = "";
+    }
+  }
+
+
+function showConfirm() {
+    const confirmElement = document.getElementById("confirm");
+    confirmElement.removeAttribute("style");
+  }
+
+function ConfirmClicked() {
+    validateInput();
 }
-
-
 
 //sounds
 function playHoverSound() {

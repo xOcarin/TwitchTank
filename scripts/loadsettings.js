@@ -1,5 +1,35 @@
 let globalSettings = {};
 
+
+function readStreamerName(filename) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(filename, 'utf8', (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
+  });
+}
+
+readStreamerName('streamername.txt')
+  .then((data) => {
+    console.log(`File contents: ${data}`);
+    document.getElementById('twitchname').value = data;
+
+
+
+    // Use the data here
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+
+
+
+
 function readSettings() {
   return new Promise((resolve, reject) => {
     fs.readFile('settings.json', 'utf8', (err, data) => {
@@ -12,6 +42,7 @@ function readSettings() {
         globalSettings.timeout = settings.timeout;
         globalSettings.theme = settings.theme;
         globalSettings.streamername = settings.streamername;
+        console.log("hello: " + globalSettings.streamername);
         resolve(settings);
       }
     });
