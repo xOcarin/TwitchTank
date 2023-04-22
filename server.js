@@ -16,7 +16,7 @@ setInterval(async () => {
     const response = await fetch('http://localhost:8000/viewers');
     const data = await response.json();
     viewers = data.viewers;
-    //console.log("HERE:::::::    " + viewers);
+    console.log("HERE:::::::    " + viewers);
   } catch (error) {
     console.error("Error fetching viewers:");
   }

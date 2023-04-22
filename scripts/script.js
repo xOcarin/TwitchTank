@@ -264,14 +264,14 @@ let counter = 0;
     readSettingsFile()
       .then(settings => {
         setInterval(() => {
-            fetch('/viewers')
+            fetch('http://localhost:3000/viewers')
               .then(response => response.json())
               .then(data => {
 
 
                 enterfish = data.viewers;
 
-                //console.log("current: " +  enterfish);
+                console.log("current: " +  enterfish);
                 console.log("names :" +names);
                 enterfish.forEach((value) => {
                   if (!names.includes(value)) {
