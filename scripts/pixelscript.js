@@ -1,7 +1,7 @@
 
-let counter = 0;
+let counterp = 0;
     class Fish {
-      constructor(x, y, width, height, speed, name, type, theme) {
+      constructor(x, y, width, height, speed, name, type) {
         this.image = new Image();
         this.imageR = new Image();
         this.imageL = new Image();
@@ -30,7 +30,6 @@ let counter = 0;
         this.deathy = 0;
         this.swaydistance = -1;
         this.swayspeed = 0;
-        this.theme = theme;
       }
 
 
@@ -40,96 +39,47 @@ let counter = 0;
         const deltaTime = currentTime - this.lastFrameTime;
 
         switch (this.type) {
-          case "1":
-            if(this.theme == 1){
-              this.imageL.src = 'assets/fish/angelL.png';
-              this.imageR.src = 'assets/fish/angelR.png';
-              this.numFrames = 26;
-              this.frameWidth = 200;
-              this.frameHeight = 200;
-            }else{
-              this.imageL.src = 'assets/fish/Bass_spritesheet.png';
-              this.imageR.src = 'assets/fish/Bass_spritesheetR.png';
-              this.numFrames = 60;
-              this.frameWidth = 200;
-              this.frameHeight = 200;
-            }
-            break;
           case "2":
-            if(this.theme == 1){
-              this.imageL.src = 'assets/fish/batL.png';
-              this.imageR.src = 'assets/fish/batR.png';
-              this.numFrames = 26;
-              this.frameWidth = 200;
-              this.frameHeight = 200;
-            }else{
-              this.imageL.src = 'assets/fish/Beepo_Bass_spritesheetL.png';
-              this.imageR.src = 'assets/fish/Beepo_Bass_spritesheetR.png';
-              this.numFrames = 60;
-              this.frameWidth = 200;
-              this.frameHeight = 200;
-            }
+            this.imageL.src = 'assets/fish/Bass_spritesheet.png';
+            this.imageR.src = 'assets/fish/Bass_spritesheetR.png';
+            this.numFrames = 15;
+            this.frameWidth = 200;
+            this.frameHeight = 77;
             break;
           case "3":
-            if(this.theme == 1){
-              this.imageL.src = 'assets/fish/longnoseL.png';
-              this.imageR.src = 'assets/fish/longnoseR.png';
-              this.numFrames = 26;
-              this.frameWidth = 200;
-              this.frameHeight = 200;
-            }else{
-              this.imageL.src = 'assets/fish/Sherbert_Bass_spritesheetL.png';
-              this.imageR.src = 'assets/fish/Sherbert_Bass_spritesheetR.png';
-              this.numFrames = 60;
-              this.frameWidth = 200;
-              this.frameHeight = 200;
-            }
+            this.imageL.src = 'assets/fish/Beepo_Bass_spritesheetL.png';
+            this.imageR.src = 'assets/fish/Beepo_Bass_spritesheetR.png';
+            this.numFrames = 15;
+            this.frameWidth = 200;
+            this.frameHeight = 77;
             break;
           case "4":
-            if(this.theme == 1){
-              this.imageL.src = 'assets/fish/unicornL.png';
-              this.imageR.src = 'assets/fish/unicornR.png';
-              this.numFrames = 26;
-              this.frameWidth = 200;
-              this.frameHeight = 200;
-            }else{
-              this.imageL.src = 'assets/fish/Uber_Bass_spritesheetL.png';
-              this.imageR.src = 'assets/fish/Uber_Bass_spritesheetR.png';
-              this.numFrames = 60;
-              this.frameWidth = 200;
-              this.frameHeight = 200;
-            }
+            this.imageL.src = 'assets/fish/Sherbert_Bass_spritesheetL.png';
+            this.imageR.src = 'assets/fish/Sherbert_Bass_spritesheetR.png';
+            this.numFrames = 15;
+            this.frameWidth = 200;
+            this.frameHeight = 77;
             break;
           case "5":
-            if(this.theme == 1){
-              this.imageL.src = 'assets/fish/angelL.png';
-              this.imageR.src = 'assets/fish/angelR.png';
-              this.numFrames = 26;
-              this.frameWidth = 200;
-              this.frameHeight = 200;
-            }else{
-              this.imageL.src = 'assets/fish/fish_spritesheet.png';
-              this.imageR.src = 'assets/fish/fish_spritesheetR.png';
-              this.numFrames = 45;
-              this.frameWidth = 200;
-              this.frameHeight = 200;
-            }
+            this.imageL.src = 'assets/fish/Uber_Bass_spritesheetL.png';
+            this.imageR.src = 'assets/fish/Uber_Bass_spritesheetR.png';
+            this.numFrames = 15;
+            this.frameWidth = 200;
+            this.frameHeight = 77;
             break;
           case "6":
-            if(this.theme == 1){
-              this.imageL.src = 'assets/fish/angelL.png';
-              this.imageR.src = 'assets/fish/angelR.png';
-              this.numFrames = 26;
-              this.frameWidth = 200;
-              this.frameHeight = 200;
-            }else{
-              this.imageL.src = 'assets/fish/Bass_spritesheet.png';
-              this.imageR.src = 'assets/fish/Bass_spritesheetR.png';
-              this.numFrames = 60;
-              this.frameWidth = 200;
-              this.frameHeight = 200;
-            }
+            this.imageL.src = 'assets/fish/rainbow_Bass_spritesheetL.png';
+            this.imageR.src = 'assets/fish/rainbow_Bass_spritesheetR.png';
+            this.numFrames = 15;
+            this.frameWidth = 200;
+            this.frameHeight = 77;
             break;
+          default:
+            this.imageL.src = 'assets/fish/fish_spritesheet.png';
+            this.imageR.src = 'assets/fish/fish_spritesheetR.png';
+            this.numFrames = 9;
+            this.frameWidth = 167;
+            this.frameHeight = 77;
       }
 
 
@@ -144,10 +94,6 @@ let counter = 0;
         if(!this.isAlive){
             ctx.drawImage(this.image, 0, 0, sourceWidth, sourceHeight, this.deathx, this.deathy, this.width, this.height);
             this.deathy = this.deathy - 1;
-            if(this.deathy < - 200){
-              console.log(this.deathy);
-              removeFromArrREAL(this.name);
-            }
           if(this.swayspeed < 25){
             this.deathx = this.deathx - this.swaydistance;
             this.swayspeed++;
@@ -157,7 +103,6 @@ let counter = 0;
             this.swayspeed = 0;
           }
           }
-
         if(this.isAlive){
           ctx.drawImage(this.image, sourceX, sourceY, sourceWidth, sourceHeight, this.x, this.y, this.width, this.height);
 
@@ -272,20 +217,20 @@ let counter = 0;
                 enterfish = data.viewers;
 
                 //console.log("current: " +  enterfish);
-                console.log("names :" +names);
+
                 enterfish.forEach((value) => {
                   if (!names.includes(value)) {
                     names.push(value);
                     let type = Math.floor(Math.random() * 6) + 1;
 
+
                     let xpos = Math.floor(Math.random() * (canvas.width - 100 + 1) + 100);
                     let ypos = Math.floor(Math.random() * (canvas.height - 100 + 1) + 100);
-
-                    console.log("theme: " + settings.theme);
-                    allFish.push(new Fish(xpos, ypos, settings.size * 50, settings.size * 50, .75, value, type.toString(), settings.theme));
-                    console.log("here: " + allFish.length);
-                    counter++;
-
+                    if(counterp < 200){
+                    allFish.push(new Fish(xpos, ypos, (canvas.width * 0.05) * settings.size/2, (canvas.height * 0.05) * settings.size/2, .75, value, type.toString()));
+                    //console.log("here: " + allFish.length);
+                    counterp++;
+                  }
                   }
                 });
 
@@ -294,10 +239,9 @@ let counter = 0;
                     const index = names.indexOf(value);
                     const fishdex = allFish.indexOf(value);
                     if (index !== -1) {
-                      names.splice(index, 1);
+                      //names.splice(index, 1);
                       //death(value);
                       removeFromArr(value);
-                      counter--;
 
                     }
                   }
@@ -332,19 +276,12 @@ let counter = 0;
       }
       else //for testing purposes
       {
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Steve", "1", 2));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "carl", "2", 2));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "deb", "3", 2));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "fucker", "4", 2));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "mongo", "5", 2));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "cuck", "6", 2));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "sad", "1", 1));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Se", "2", 1));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "worsee", "3", 1));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Swes", "4", 1));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Sfsddas", "5", 1));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "hug", "6", 1));
-
+        let x = .90
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, (canvas.width * 0.05) * x, (canvas.height * 0.05) * x, .75, "Steve", "1"));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, (canvas.width * 0.05) * x, (canvas.height * 0.05) * x, .75, "Chauncy", "2"));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Frank", "3"));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Patricia", "4"));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "flippy dippy", "5"));
       }
 }
 
@@ -374,21 +311,16 @@ let counter = 0;
         fish.animate();
       });
     }
-    // Get the counter element by its ID
-    const counterElement = document.getElementById("counter");
-
-    // Update the text value of the counter element
 
     const moveFishInterval = setInterval(() => {
-      counterElement.textContent = counter;
       allFish.forEach((fish) => {
         fish.move(canvas.width, canvas.height);
       });
-    }, 50);
+    }, 100);
 
     setInterval(() => {
       animateAllFish();
-    }, 20);
+    }, 100);
 
 window.addEventListener('resize', () => {
   width = window.innerWidth;
@@ -416,20 +348,6 @@ function removeFromArr(name){
       //allFish.splice(i, 1);
       death(allFish[i]);
       return "Fish Removed";
-    }
-  }
-}
-
-function removeFromArrREAL(name){
-  console.log("HIT");
-  for (i in allFish)
-  {
-    console.log("HIT2");
-    if(allFish[i].name == name)
-    {
-      console.log("HIT3");
-      allFish.splice(i, 1);
-
     }
   }
 }

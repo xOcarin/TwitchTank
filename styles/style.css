@@ -21,7 +21,7 @@ canvas {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-image: url("../assets/bg/real.png");
+  background-image: url("../assets/bg/realbg.png");
   background-size: cover;
 }
 
@@ -49,6 +49,8 @@ canvas {
 .settings-container img {
   margin-bottom: 24px;
 }
+
+
 
 
 .sizebuttons {
@@ -294,4 +296,101 @@ canvas {
 
 #applybutton:hover{
   content: url('../assets/settings/applybtnonhover.png');
+}
+
+#settings{
+  user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    transform: scale3d(1, 1, 1) rotate(0deg);
+    transition: transform 0.2s ease-in-out;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+
+
+}
+#settings:hover {
+  transform: scale3d(1.2, 1.2, 1.2);
+}
+
+
+#confirm{
+  user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    transform: scale3d(1, 1, 1) rotate(0deg)  translateY(-40%) scale(.5);
+    transition: transform 0.2s ease-in-out;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+
+
+}
+#confirm:hover {
+  transform: scale3d(.7, .7, .7) translateY(-60%);
+}
+
+#twitchname {
+  user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  display: inline-block;
+  width: 200px;
+  transform: translateY(-135%);
+  font-family: "pophappy", sans-serif !important;
+  color: #888888 !important;
+  border: 2px solid white;
+  border-radius: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-align: center;
+  transform: scale3d(1, 1, 1) translateY(-150%);
+  transition: transform 0.2s ease-in-out;
+}
+
+#twitchname:focus {
+  color: #000000 !important;
+  outline: none;
+}
+
+#twitchname:hover {
+  transform: scale3d(1.1, 1.1, 1.1) translateY(-135%);
+  transition: transform 0.2s ease-in-out;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+#counter {
+  user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+  transform: scale(2.5);
+  opacity: .5;
+  position: fixed;
+  display: flex;
+  top: 0;
+  right: 0;
+  margin: 20px;
+  font-size: 24px;
+  color: white;
+  font-family: "pophappy", sans-serif !important;
+  padding: 10px;
 }
