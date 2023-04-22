@@ -144,7 +144,7 @@ let counter = 0;
         if(!this.isAlive){
             ctx.drawImage(this.image, 0, 0, sourceWidth, sourceHeight, this.deathx, this.deathy, this.width, this.height);
             this.deathy = this.deathy - 1;
-            if(this.deathy < 0){
+            if(this.deathy < - 200){
               console.log(this.deathy);
               removeFromArrREAL(this.name);
             }
