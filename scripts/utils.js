@@ -278,6 +278,10 @@ function ConfirmClicked() {
     validateInput();
 }
 
+function  closeSettings() {
+    document.getElementById('settingscontainer').style.display = 'none';
+}
+
 //sounds
 function playHoverSound() {
   var audio = document.getElementById("hoverAudio");

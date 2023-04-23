@@ -210,7 +210,11 @@ let counter = 0;
          ctx.shadowOffsetY = 2;
 
          // draw the text
+         if(this.theme == 1){
          ctx.fillText(this.name, textX, this.y);
+       }else {
+         ctx.fillText(this.name, textX, this.y-10);
+       }
 
          // restore the canvas state to remove the shadow effect
          ctx.restore();
@@ -322,8 +326,8 @@ let counter = 0;
                     names.push(value);
                     let type = Math.floor(Math.random() * 6) + 1;
 
-                    let xpos = Math.floor(Math.random() * (canvas.width - 100 + 1) + 100);
-                    let ypos = Math.floor(Math.random() * (canvas.height - 100 + 1) + 100);
+                    let xpos = Math.floor(Math.random() * (canvas.width - 5 + 1) + 5);
+                    let ypos = Math.floor(Math.random() * (canvas.height - 5 + 1) + 5);
 
                     console.log("theme: " + settings.theme);
                     allFish.push(new Fish(xpos, ypos, settings.size * 50, settings.size * 50, .75, value, type.toString(), settings.theme));
@@ -376,18 +380,6 @@ let counter = 0;
       }
       else //for testing purposes
       {
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Steve", "1", 2));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "carl", "2", 2));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "deb", "3", 2));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "fucker", "4", 2));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "mongo", "5", 2));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "cuck", "6", 2));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "sad", "1", 1));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Se", "2", 1));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "worsee", "3", 1));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Swes", "4", 1));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Sfsddas", "5", 1));
-        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "hug", "6", 1));
 
 
       }

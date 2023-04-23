@@ -22,10 +22,21 @@ body {
   justify-content: space-between;
   align-items: stretch;
   width: 100vw;
-  background-image: url("../assets/bg/homebackground.jpeg");
+  background-image: url("../assets/bg/homebackground.png");
   font-family: 'pophappy', sans-serif;
+  opacity: 0;
+  animation: fadeIn 2.4s ease-in-out forwards;
 }
 
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 
 canvas {
@@ -37,7 +48,7 @@ canvas {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-image: url("../assets/bg/homebackground.jpeg");
+  background-image: url("../assets/bg/homebackground2.png");
   background-size: cover;
 }
 
@@ -58,7 +69,23 @@ canvas {
   position: absolute;
   left: 50%;
   top: 5%;
-  transform: scale(.75) translateX(-70%);
+  transform: scale(.75) translateX(-70%) rotateY(0deg);
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  animation: pop-out 1s forwards;
+}
+
+@keyframes pop-out {
+  0% {
+    transform: scale(.75) translateX(-70%) rotateY(0deg);
+  }
+  100% {
+    transform: scale(1) translateX(-50%) rotateY(360deg);
+  }
 }
 
 
@@ -69,6 +96,12 @@ canvas {
   width: 100%;
   height: 70px; /* Set a specific height for the container */
   bottom: 25%;
+  user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 .logbutton {
@@ -77,7 +110,16 @@ canvas {
   position: absolute;
   left: 50%;
   bottom: 30%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) scale3d(1, 1, 1) rotate(0deg);
+  user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+.logbutton:hover {
+  transform: translateX(-50%) scale3d(1.2, 1.2, 1.2);
 }
 
 .signup {
@@ -87,6 +129,12 @@ canvas {
   left: 50%;
   bottom: calc(30% - 20px); /* adjust this value to the desired distance from the login button */
   transform: translateX(-50%);
+  user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 @media (max-height: 900px) {
@@ -126,11 +174,13 @@ canvas {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 600px; /* increase width to 600px */
-  padding: 40px; /* increase padding to 40px */
-  border-radius: 20px; /* increase border radius to 20px */
-  border: 5px solid black;
-  backdrop-filter: blur(15px);
+  width: 600px;
+  padding: 40px;
+  border-radius: 40px;
+  border: 1px solid white;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.8) /* white outer glow */;
+  color: white;
 }
 
 .login-form {
@@ -158,7 +208,13 @@ button[type="submit"] {
   font-size: 50px; /* increase font size */
 }
 
+#twitchtankname{
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
 
+#password{
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
 
 
 label {
@@ -175,6 +231,7 @@ input {
   margin-bottom: 20px;
   width: 100%;
   box-sizing: border-box;
+  border-radius: 40px
 }
 
 button {
@@ -183,12 +240,16 @@ button {
   border-radius: 5px;
   border: none;
   font-family: 'pophappy', sans-serif;
-  background-color: #0099FF;
+  background-color: rgba(80, 185, 214, 1);
   color: white;
-  width: 100%;
+  width: 30%;
   cursor: pointer;
+  border-radius: 40px;
+  border: 1px solid rgba(97, 204, 220, 0.8);
+  box-shadow: 0 0 5px 1px rgba(97, 204, 220, 0.8), 0 2px 2px rgba(0, 0, 0, 0.4);
+  opacity: 50%;
 }
 
 button:hover {
-  background-color: #0044FF;
+    background-color: rgba(97, 204, 220, 0.8);
 }

@@ -4,18 +4,18 @@
     <link rel="stylesheet" href="./styles/styleHome.css">
   </head>
   <body>
+    <audio id="hoverAudio" src="./assets/sounds/hover.wav" preload="auto"></audio>
+    <audio id="clickAudio" src="./assets/sounds/click.wav" preload="auto"></audio>
     <div class="maincontent">
       <img  src='./assets/logo.png' class="logo"></img>
       <div class="signupandlogin">
-        <img  src='./assets/logbuttontrans.png' class="logbutton" onClick="showLogin()"></img>
+        <img  src='./assets/logbuttontrans.png' class="logbutton" onClick="showLogin(); playClickSound()" onmouseover="playHoverSound()"></img>
 
 
         <p class="signup" onClick="showSignup()">Don't have an account? <u>Signup here.</u></p>
         </div>
 
-        <a href="main.html">
-          <img src="./assets/logbutton.png" class="testbutton">
-        </a>
+        
       </div>
 
 
@@ -27,9 +27,9 @@
 
     <div class="login-container" id="login-container" style="display:none;">
       <form class="login-form" action="http://18.223.125.204/fish/login.php/" method="post">
-        <label for="username">Twitch Tank Username</label>
+        <label id="twitchtankname" for="username">Twitch Tank Username</label>
         <input type="text" id="username" name="username">
-        <label for="password">Password</label>
+        <label id="password"for="password">Password</label>
         <input type="password" id="password" name="password">
         <button href="main.html">Login</button>
       </form>

@@ -54,10 +54,12 @@
         </div>
 
 
-
-        <img id="applybutton" src='./assets/settings/applybtn.png' onclick="playClickSound();  acceptAndApply()"></img>
-        <img id="applybuttononhover" src='./assets/settings/applybtnonhover.png' style="display:none"></img>
-
+        <div id="settingsbutton">
+          <img id="applybutton" src='./assets/settings/applybtn.png' onclick="playClickSound();  acceptAndApply()" onmouseover="playHoverSound()"></img>
+          <img id="applybuttononhover" src='./assets/settings/applybtnonhover.png' style="display:none"></img>
+          <img id="closebutton" src='./assets/settings/closebtnonhover.png' onclick="playClickSound();  closeSettings()" onmouseover="playHoverSound()"></img>
+          <img id="closebuttononhover" src='./assets/settings/closebtnonhover.png' style="display:none"></img>
+        </div>
     </div>
   </body>
 </html>

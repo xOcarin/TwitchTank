@@ -67,8 +67,8 @@ let counter = 0;
             this.frameHeight = 200;
             break;
           case "5":
-            this.imageL.src = 'assets/fish/angelL.png';
-            this.imageR.src = 'assets/fish/angelR.png';
+            this.imageL.src = 'assets/fish/clownL.png';
+            this.imageR.src = 'assets/fish/clownR.png';
             this.numFrames = 26;
             this.frameWidth = 200;
             this.frameHeight = 200;
@@ -76,55 +76,55 @@ let counter = 0;
           case "6":
             this.imageL.src = 'assets/fish/Sherbert_Bass_spritesheetL.png';
             this.imageR.src = 'assets/fish/Sherbert_Bass_spritesheetR.png';
-            this.numFrames = 15;
+            this.numFrames = 60;
             this.frameWidth = 200;
-            this.frameHeight = 77;
+            this.frameHeight = 200;
             break;
           case "7":
             this.imageL.src = 'assets/fish/fish_spritesheet.png';
             this.imageR.src = 'assets/fish/fish_spritesheetR.png';
-            this.numFrames = 9;
-            this.frameWidth = 167;
-            this.frameHeight = 77;
+            this.numFrames = 45;
+            this.frameWidth = 200;
+            this.frameHeight = 200;
             break;
           case "8":
             this.imageL.src = 'assets/fish/Beepo_Bass_spritesheetL.png';
             this.imageR.src = 'assets/fish/Beepo_Bass_spritesheetR.png';
-            this.numFrames = 15;
+            this.numFrames = 60;
             this.frameWidth = 200;
-            this.frameHeight = 77;
+            this.frameHeight = 200;
             break;
           case "9":
             this.imageL.src = 'assets/fish/rainbow_Bass_spritesheetL.png';
             this.imageR.src = 'assets/fish/rainbow_Bass_spritesheetR.png';
-            this.numFrames = 15;
+            this.numFrames = 60;
             this.frameWidth = 200;
-            this.frameHeight = 77;
+            this.frameHeight = 200;
             break;
           case "10":
             this.imageL.src = 'assets/fish/Bass_spritesheet.png';
             this.imageR.src = 'assets/fish/Bass_spritesheetR.png';
-            this.numFrames = 15;
+            this.numFrames = 60;
             this.frameWidth = 200;
-            this.frameHeight = 77;
+            this.frameHeight = 200;
             break;
           case "11":
             this.imageL.src = 'assets/fish/Uber_Bass_spritesheetL.png';
             this.imageR.src = 'assets/fish/Uber_Bass_spritesheetR.png';
-            this.numFrames = 15;
+            this.numFrames = 60;
             this.frameWidth = 200;
-            this.frameHeight = 77;
+            this.frameHeight = 200;
             break;
           case "12":
             this.imageL.src = 'assets/fish/Sherbert_Bass_spritesheetL.png';
             this.imageR.src = 'assets/fish/Sherbert_Bass_spritesheetR.png';
-            this.numFrames = 15;
+            this.numFrames = 60;
             this.frameWidth = 200;
-            this.frameHeight = 77;
+            this.frameHeight = 200;
             break;
           default:
-            this.imageL.src = 'assets/fish/angelL.png';
-            this.imageR.src = 'assets/fish/angelR.png';
+            this.imageL.src = 'assets/fish/tangL.png';
+            this.imageR.src = 'assets/fish/tangR.png';
             this.numFrames = 26;
             this.frameWidth = 200;
             this.frameHeight = 200;
@@ -194,11 +194,12 @@ let counter = 0;
           this.checkV = !this.checkV;
         }
         //random horizontal reverse
-        if (Math.floor(Math.random() * 500) + 1 === (1 || 2)) {
+        /*if (Math.floor(Math.random() * 500) + 1 === (1 || 2)) {
           this.checkH = !this.checkH;
-        }
+        }*/
 
         //if direction changes, change movement direction/image
+
         if (this.checkH === true) {
           this.x -= this.speed;
           this.image = this.imageL;
@@ -260,21 +261,22 @@ let counter = 0;
         type = type.toString();
 
         //leftfish
-        for(let i = 0; i < 15; i++){
-          size = Math.floor(Math.random() * (125 - 100 + 1) + 100);
-          type = Math.floor(Math.random() * (5 - 1 + 1) + 1);
+        for(let i = 0; i < 12; i++){
+          size = Math.floor(Math.random() * (150 - 125 + 1) + 125);
           spawnx = Math.floor(Math.random() * (350 - 1 + 1) + 1);
           spawny = Math.floor(Math.random() * (canvas.height - 1 + 1) + 1);
+          type = i%12;
           type = type.toString();
           allFish.push(new Fish(spawnx, spawny, size, size, .75, "Steve", type, false));
         }
 
         //rightfish
-        for(let i = 0; i < 15; i++){
-          size = Math.floor(Math.random() * (125 - 100 + 1) + 100);
-          type = Math.floor(Math.random() * (5 - 1 + 1) + 1);
+        for(let i = 0; i < 12; i++){
+          size = Math.floor(Math.random() * (150 - 125 + 1) + 125);
+          type = Math.floor(Math.random() * (12 - 1 + 1) + 1);
           spawnx = Math.floor(Math.random() * 381) + (canvas.width - 380);
           spawny = Math.floor(Math.random() * (canvas.height - 1 + 1) + 1);
+          type = i%12;
           type = type.toString();
           allFish.push(new Fish(spawnx, spawny, size, size, .75, "Steve", type, true));
         }

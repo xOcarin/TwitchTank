@@ -50,7 +50,21 @@ canvas {
   margin-bottom: 24px;
 }
 
+@media (max-height: 900px) {
+  .settings-container{
+    padding: 40px;
+    width: 700px;
+    height: 681px;
+  }
+}
+@media (max-height: 1400px) {
 
+  .settings-container{
+    padding: 40px;
+    width: 700px;
+    height: 681px;
+  }
+}
 
 
 .sizebuttons {
@@ -89,6 +103,7 @@ canvas {
   margin: 0 50px;
 }
 #settingheader{
+  transform: translateY(25%);
   user-drag: none;
     -webkit-user-drag: none;
     user-select: none;
@@ -292,10 +307,27 @@ canvas {
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+    transform: scale3d(1, 1, 1) rotate(0deg);
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
 }
 
 #applybutton:hover{
-  content: url('../assets/settings/applybtnonhover.png');
+  transform: scale3d(1.1, 1.1, 1.1) rotate(0deg);
+}
+
+#closebutton{
+  user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    transform: scale3d(1, 1, 1) rotate(0deg);
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
+}
+
+#closebutton:hover{
+  transform: scale3d(1.1, 1.1, 1.1) rotate(0deg);
 }
 
 #settings{
