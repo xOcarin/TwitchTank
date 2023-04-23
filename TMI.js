@@ -13,8 +13,8 @@ const lastActive = {};
 
 function handleMessage(channel, tags, message, self) {
   const displayName = tags['display-name'];
-  //console.log("dispalynames:" +displayNames);
-  //console.log("viewers:" +viewers);
+  console.log("dispalynames:" +displayNames);
+  console.log("viewers:" +viewers);
   if (!displayNames.includes(displayName)) {
     displayNames.push(displayName);
   }
