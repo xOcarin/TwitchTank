@@ -46,7 +46,7 @@ let counter = 0;
             if(this.theme == 1){
               this.imageL.src = 'assets/fish/angelL.png';
               this.imageR.src = 'assets/fish/angelR.png';
-              this.numFrames = 26;
+              this.numFrames = 25;
               this.frameWidth = 200;
               this.frameHeight = 200;
             }else{
@@ -104,8 +104,8 @@ let counter = 0;
             break;
           case "5":
             if(this.theme == 1){
-              this.imageL.src = 'assets/fish/angelL.png';
-              this.imageR.src = 'assets/fish/angelR.png';
+              this.imageL.src = 'assets/fish/clownL.png';
+              this.imageR.src = 'assets/fish/clownR.png';
               this.numFrames = 26;
               this.frameWidth = 200;
               this.frameHeight = 200;
@@ -119,14 +119,14 @@ let counter = 0;
             break;
           case "6":
             if(this.theme == 1){
-              this.imageL.src = 'assets/fish/angelL.png';
-              this.imageR.src = 'assets/fish/angelR.png';
+              this.imageL.src = 'assets/fish/tangL.png';
+              this.imageR.src = 'assets/fish/tangR.png';
               this.numFrames = 26;
               this.frameWidth = 200;
               this.frameHeight = 200;
             }else{
-              this.imageL.src = 'assets/fish/Bass_spritesheet.png';
-              this.imageR.src = 'assets/fish/Bass_spritesheetR.png';
+              this.imageL.src = 'assets/fish/Rainbow_Bass_spritesheetl.png';
+              this.imageR.src = 'assets/fish/Rainbow_Bass_spritesheetR.png';
               this.numFrames = 60;
               this.frameWidth = 200;
               this.frameHeight = 200;
@@ -199,10 +199,21 @@ let counter = 0;
         }else{
           textsize = this.width * .28;
         }
-          ctx.font = `${textsize}px 'pophappy'`;
-          ctx.fillStyle = "white";
-          ctx.fillText(this.name, textX, this.y);
+        ctx.font = `${textsize}px 'pophappy'`;
+         ctx.fillStyle = "white";
 
+         // save the canvas state and set shadow properties
+         ctx.save();
+         ctx.shadowColor = "black";
+         ctx.shadowBlur = 5;
+         ctx.shadowOffsetX = 2;
+         ctx.shadowOffsetY = 2;
+
+         // draw the text
+         ctx.fillText(this.name, textX, this.y);
+
+         // restore the canvas state to remove the shadow effect
+         ctx.restore();
         }
 
 
@@ -327,9 +338,9 @@ let counter = 0;
                     const index = names.indexOf(value);
                     const fishdex = allFish.indexOf(value);
                     if (index !== -1) {
-                      names.splice(index, 1);
-                      //death(value);
+
                       removeFromArr(value);
+                      names.splice(index, 1);
                       counter--;
 
                     }
@@ -365,7 +376,7 @@ let counter = 0;
       }
       else //for testing purposes
       {
-        /*allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Steve", "1", 2));
+        allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Steve", "1", 2));
         allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "carl", "2", 2));
         allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "deb", "3", 2));
         allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "fucker", "4", 2));
@@ -377,7 +388,7 @@ let counter = 0;
         allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Swes", "4", 1));
         allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Sfsddas", "5", 1));
         allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "hug", "6", 1));
-        */
+
 
       }
 }
