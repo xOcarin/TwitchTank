@@ -76,6 +76,7 @@ function startTmiClient(channel) {
           displayNames.splice(index, 1);
           viewers = displayNames.slice();
           console.log("chesdasd: " + settings.channel);
+
         }
       }
     });

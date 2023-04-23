@@ -31,6 +31,8 @@ let counter = 0;
         this.swaydistance = -1;
         this.swayspeed = 0;
         this.theme = theme;
+        this.loopVar = 0;
+        this.deathspinchance = Math.floor(Math.random() * 2) + 1;
       }
 
 
@@ -44,7 +46,7 @@ let counter = 0;
             if(this.theme == 1){
               this.imageL.src = 'assets/fish/angelL.png';
               this.imageR.src = 'assets/fish/angelR.png';
-              this.numFrames = 26;
+              this.numFrames = 25;
               this.frameWidth = 200;
               this.frameHeight = 200;
             }else{
@@ -102,8 +104,8 @@ let counter = 0;
             break;
           case "5":
             if(this.theme == 1){
-              this.imageL.src = 'assets/fish/angelL.png';
-              this.imageR.src = 'assets/fish/angelR.png';
+              this.imageL.src = 'assets/fish/clownL.png';
+              this.imageR.src = 'assets/fish/clownR.png';
               this.numFrames = 26;
               this.frameWidth = 200;
               this.frameHeight = 200;
@@ -117,14 +119,14 @@ let counter = 0;
             break;
           case "6":
             if(this.theme == 1){
-              this.imageL.src = 'assets/fish/angelL.png';
-              this.imageR.src = 'assets/fish/angelR.png';
+              this.imageL.src = 'assets/fish/tangL.png';
+              this.imageR.src = 'assets/fish/tangR.png';
               this.numFrames = 26;
               this.frameWidth = 200;
               this.frameHeight = 200;
             }else{
-              this.imageL.src = 'assets/fish/Bass_spritesheet.png';
-              this.imageR.src = 'assets/fish/Bass_spritesheetR.png';
+              this.imageL.src = 'assets/fish/Rainbow_Bass_spritesheetl.png';
+              this.imageR.src = 'assets/fish/Rainbow_Bass_spritesheetR.png';
               this.numFrames = 60;
               this.frameWidth = 200;
               this.frameHeight = 200;
@@ -141,21 +143,45 @@ let counter = 0;
           //ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 
-        if(!this.isAlive){
-            ctx.drawImage(this.image, 0, 0, sourceWidth, sourceHeight, this.deathx, this.deathy, this.width, this.height);
-            this.deathy = this.deathy - 1;
-            if(this.deathy < - 200){
-              console.log(this.deathy);
-              removeFromArrREAL(this.name);
+          if(!this.isAlive)
+        {
+            if (this.deathy > -200)
+            {
+            ctx.save(); // save the current canvas state
+            ctx.translate(this.deathx + this.width / 2, this.deathy + this.height / 2);
+            if(this.deathspinchance == 1){
+              ctx.rotate(this.loopVar * Math.PI / -180);
+            }else{
+              ctx.rotate(this.loopVar * Math.PI / 180);
             }
-          if(this.swayspeed < 25){
-            this.deathx = this.deathx - this.swaydistance;
-            this.swayspeed++;
+            ctx.drawImage(this.image, 0, 0, 200, 200, -this.width / 2, -this.height / 2, this.width, this.height); // draw the image
+            ctx.restore(); // restore the canvas state to its previous state
+            console.log(this.loopVar);
+            this.loopVar += .25;
             }
-          else{
-            this.swaydistance = (this.swaydistance * -1);
-            this.swayspeed = 0;
-          }
+                this.checkH = true;
+                ctx.save();
+                ctx.scale(1, -1); // Flip vertically
+                //ctx.drawImage(this.image, 0, 0, sourceWidth, sourceHeight, this.deathx, -this.deathy, this.width, this.height); // draw the image
+                ctx.restore();
+                this.deathy = this.deathy - 1;
+                if(this.deathy < -200)
+                {
+                      console.log("deathy: " + this.deathy);
+                      removeFromArrREAL(this.name);
+                }
+                  if(this.swayspeed < 25)
+                {
+                    //this.deathx = this.deathx - this.swaydistance;
+                    //this.swayspeed++;
+                }
+                  else
+                {
+                    //this.swaydistance = (this.swaydistance * -1);
+                    //this.swayspeed = 0;
+                  }
+
+
           }
 
         if(this.isAlive){
@@ -166,12 +192,28 @@ let counter = 0;
 
           // adjust the x-coordinate so the text is centered on the fish
           const textX = this.x + (this.width / 2) - (textWidth / 2);
-
+          let textsize = this.width * .15;
           // draw the text
-          ctx.font = "15px 'pophappy'";
-          ctx.fillStyle = "white";
-          ctx.fillText(this.name, textX, this.y);
+          if(this.width > 75){
+          textsize = this.width * .15;
+        }else{
+          textsize = this.width * .28;
+        }
+        ctx.font = `${textsize}px 'pophappy'`;
+         ctx.fillStyle = "white";
 
+         // save the canvas state and set shadow properties
+         ctx.save();
+         ctx.shadowColor = "black";
+         ctx.shadowBlur = 5;
+         ctx.shadowOffsetX = 2;
+         ctx.shadowOffsetY = 2;
+
+         // draw the text
+         ctx.fillText(this.name, textX, this.y);
+
+         // restore the canvas state to remove the shadow effect
+         ctx.restore();
         }
 
 
@@ -206,6 +248,7 @@ let counter = 0;
         }
 
         //if direction changes, change movement direction/image
+        if(this.isAlive){
         if (this.checkH === true) {
           this.x -= this.speed;
           this.image = this.imageL;
@@ -225,6 +268,7 @@ let counter = 0;
             this.y -= this.speed;
           }
         }
+      }
       }} //fish object
 
 
@@ -294,9 +338,9 @@ let counter = 0;
                     const index = names.indexOf(value);
                     const fishdex = allFish.indexOf(value);
                     if (index !== -1) {
-                      names.splice(index, 1);
-                      //death(value);
+
                       removeFromArr(value);
+                      names.splice(index, 1);
                       counter--;
 
                     }
@@ -344,6 +388,7 @@ let counter = 0;
         allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Swes", "4", 1));
         allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "Sfsddas", "5", 1));
         allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "hug", "6", 1));
+
 
       }
 }
