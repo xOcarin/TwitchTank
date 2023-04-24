@@ -200,12 +200,15 @@ canvas {
 .login-form input {
   font-size: 50px !important; /* increase font size to 24px */
 }
+.login-form input:focus {
+  outline: none;
+}
 
 
 button[type="submit"] {
-  padding: 16px 24px; /* increase padding */
+  padding: 18px 10px; /* increase padding */
   font-family: 'pophappy', sans-serif;
-  font-size: 50px; /* increase font size */
+  font-size: 20px; /* increase font size */
 }
 
 #twitchtankname{
@@ -248,6 +251,7 @@ button {
   border: 1px solid rgba(97, 204, 220, 0.8);
   box-shadow: 0 0 5px 1px rgba(97, 204, 220, 0.8), 0 2px 2px rgba(0, 0, 0, 0.4);
   opacity: 50%;
+  outline:none;
 }
 
 button:hover {

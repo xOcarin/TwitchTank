@@ -178,11 +178,11 @@ let counter = 0;
 
       move() {
         //are you in canvas bounds?
-        if (this.x <= 0) {
+        if (this.x <= -300) {
           this.checkH = false;
         } else if (this.y >= (canvas.height - 75)) {
           this.checkV = false;
-        } else if (this.x + this.width >= canvas.width) {
+        } else if (this.x + this.width >= canvas.width + 300) {
           this.checkH = true;
         } else if (this.y + this.height <= 75) {
           this.checkV = true;
@@ -281,6 +281,45 @@ let counter = 0;
           allFish.push(new Fish(spawnx, spawny, size, size, .75, "Steve", type, true));
         }
 
+        for(let i = 0; i < 12; i++){
+          size = Math.floor(Math.random() * (150 - 125 + 1) + 125);
+          spawnx = Math.floor(Math.random() * (-300 - 1 + 1) + 1);
+          spawny = Math.floor(Math.random() * (canvas.height - 1 + 1) + 1);
+          type = i%12;
+          type = type.toString();
+          allFish.push(new Fish(spawnx, spawny, size, size, .75, "Steve", type, false));
+        }
+
+        for(let i = 0; i < 12; i++){
+          size = Math.floor(Math.random() * (150 - 125 + 1) + 125);
+          type = Math.floor(Math.random() * (12 - 1 + 1) + 1);
+          spawnx = Math.floor(Math.random() * 301) + canvas.width;
+          spawny = Math.floor(Math.random() * (canvas.height - 1 + 1) + 1);
+          type = i%12;
+          type = type.toString();
+          allFish.push(new Fish(spawnx, spawny, size, size, .75, "Steve", type, true));
+        }
+
+        setTimeout(() => {
+          for(let i = 0; i < 12; i++){
+            size = Math.floor(Math.random() * (150 - 125 + 1) + 125);
+            spawnx = Math.floor(Math.random() * (-300 - 1 + 1) + 1);
+            spawny = Math.floor(Math.random() * (canvas.height - 1 + 1) + 1);
+            type = i%12;
+            type = type.toString();
+            allFish.push(new Fish(spawnx, spawny, size, size, .75, "Steve", type, false));
+          }
+
+          for(let i = 0; i < 12; i++){
+            size = Math.floor(Math.random() * (150 - 125 + 1) + 125);
+            type = Math.floor(Math.random() * (12 - 1 + 1) + 1);
+            spawnx = Math.floor(Math.random() * 301) + canvas.width;
+            spawny = Math.floor(Math.random() * (canvas.height - 1 + 1) + 1);
+            type = i%12;
+            type = type.toString();
+            allFish.push(new Fish(spawnx, spawny, size, size, .75, "Steve", type, true));
+          }
+        }, 15000);
 
 
 

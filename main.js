@@ -17,6 +17,7 @@ function createWindow() {
   });
 
   mainWindow.maximize();
+  mainWindow.setMenu(null);
 
 
 

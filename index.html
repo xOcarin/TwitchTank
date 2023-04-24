@@ -15,7 +15,7 @@
         <p class="signup" onClick="showSignup()">Don't have an account? <u>Signup here.</u></p>
         </div>
 
-        
+
       </div>
 
 
@@ -28,22 +28,22 @@
     <div class="login-container" id="login-container" style="display:none;">
       <form class="login-form" action="http://18.223.125.204/fish/login.php/" method="post">
         <label id="twitchtankname" for="username">Twitch Tank Username</label>
-        <input type="text" id="username" name="username">
+        <input class="borderremoval" type="text" id="username" name="username">
         <label id="password"for="password">Password</label>
-        <input type="password" id="password" name="password">
+        <input class="borderremoval" type="password" id="password" name="password">
         <button href="main.html">Login</button>
       </form>
     </div>
 
     <div class="login-container" id="signup-container" style="display:none;">
       <form class="login-form" action="http://18.223.125.204/fish/signup.php/" method="post">
-        <label for="username">Email</label>
+        <label class="borderremoval2" for="username">Email</label>
         <input type="text" id="email" name="email">
-        <label for="username">Username</label>
+        <label class="borderremoval2" for="username">Username</label>
         <input type="text" id="username" name="username">
-        <label for="password">Password</label>
+        <label class="borderremoval2" for="password" >Password</label>
         <input type="password" id="password" name="password">
-        <button type="submit">Signup</button>
+        <button id="signup" type="submit">Signup</button>
       </form>
     </div>
 
