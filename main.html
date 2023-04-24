@@ -15,7 +15,9 @@
         <input type=text id="twitchname" value="Enter streamer name here" oninput="resizeInput()" onclick="playClickSound(); clearDefaultText();   showConfirm()" onmouseover="playHoverSound()">
         <img id="confirm" src='./assets/settings/confirm.png' onclick="playClickSound(); ConfirmClicked() " onmouseover="playHoverSound()" style="display: none"></img>
         <div id="counter">0</div>
-        <div id="Logout">LOG OUT</div>
+        <form id="logout-form" action="http://18.223.125.204/fish/logout.php" method="post">
+            <button id="Logout" type="submit">LOG OUT</button>
+        </form>
     </div>
 
 
