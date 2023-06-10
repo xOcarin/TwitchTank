@@ -26,7 +26,7 @@ function readSettings() {
   return new Promise((resolve, reject) => {
     fs.readFile('settings.json', 'utf8', (err, data) => {
       if (err) {
-        reject(err);
+        reject(err + "Sdhakjsdhkas");
       } else {
         const settings = JSON.parse(data);
         globalSettings.size = settings.size;

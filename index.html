@@ -1,52 +1,69 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="./styles/styleHome.css">
+    <link rel="stylesheet" href="./styles/style.css">
   </head>
   <body>
+    <canvas id="canvas"></canvas>
+    <script id="oceanscript" type="text/javascript" defer src="./scripts/script.js"></script>
+    <script src="./scripts/utils.js"></script>
+    <script defer src="./scripts/loadsettings.js"></script>
     <audio id="hoverAudio" src="./assets/sounds/hover.wav" preload="auto"></audio>
     <audio id="clickAudio" src="./assets/sounds/click.wav" preload="auto"></audio>
-    <div class="maincontent">
-      <img  src='./assets/logo.png' class="logo"></img>
-      <div class="signupandlogin">
-        <img  src='./assets/logbuttontrans.png' class="logbutton" onClick="showLogin(); playClickSound()" onmouseover="playHoverSound()"></img>
+    <div class="main-ui" id="mainui">
+        <img id="settings" src='./assets/settings/settingsbutton.png' onclick="playClickSound(); displaySettings()" onmouseover="playHoverSound()" ></img>
+        <input type=text id="twitchname" value="Enter streamer name here" oninput="resizeInput()" onclick="playClickSound(); clearDefaultText();   showConfirm()" onmouseover="playHoverSound()">
+        <img id="confirm" src='./assets/settings/confirm.png' onclick="playClickSound(); ConfirmClicked() " onmouseover="playHoverSound()" style="display: none"></img>
+        <div id="counter">0</div>
+        <form id="logout-form" action="http://18.223.125.204/fish/logout.php" method="post">
+            
+        </form>
+
+    </div>
 
 
-        <p class="signup" onClick="showSignup()">Don't have an account? <u>Signup here.</u></p>
+
+    <div class="settings-container" id="settingscontainer">
+        <img id="settingheader" src='./assets/settings/settings_header.png'></img>
+
+        <img id="sizeheader" src='./assets/settings/size_header.png'></img>
+        <div class="sizebuttons">
+            <img id="small" src='./assets/settings/button.png' onclick="radioOnClick('small'); radioExclusive('small', '.sizebuttons'); playClickSound()"></img>
+            <img id="medium" src='./assets/settings/button.png' onclick="radioOnClick('medium'); radioExclusive('medium', '.sizebuttons'); playClickSound()"></img>
+            <img id="large" src='./assets/settings/button.png' onclick="radioOnClick('large'); radioExclusive('large', '.sizebuttons'); playClickSound()"></img>
         </div>
 
 
-      </div>
 
 
-    <canvas id="canvas"></canvas>
-    <script src="scripts/utils.js"></script>
-    <script src="scripts/homescript.js"></script>
+        <img id="counterheader" src='./assets/settings/counter_header.png'></img>
+        <div class="counterbuttons">
+            <img id="off" src='./assets/settings/button.png' onclick="radioOnClick('off'); radioExclusive('off', '.counterbuttons'); playClickSound()"></img>
+            <img id="on" src='./assets/settings/button.png' onclick="radioOnClick('on'); radioExclusive('on', '.counterbuttons'); playClickSound()"></img>
+        </div>
+
+        <img id="timeoutheader" src='./assets/settings/timeout_header.png'></img>
+        <input type="number" min="1" max="30" id="timeoutform" value="15" onblur="restrictTimeoutInput()"> </img>
+        <p id="timeoutchoice" >1-30 minutes</p>
+
+        <img id="themeheader" src='./assets/settings/theme_header.png'></img>
+        <div class="themes">
+            <img id="theme1" src='./assets/settings/oceantheme.png' onclick="oceanthemeOnClick(); playClickSound()" onmouseover="playHoverSound()"></img>
+            <img id="theme2" src='./assets/settings/pixeltheme.png' onclick="pixelthemeOnClick(); playClickSound()" onmouseover="playHoverSound()"></img>
+        </div>
+
+        <div class="themestitles">
+            <img id="themetitleocean" src='./assets/settings/oceanvistatext.png'></img>
+            <img id="themetitlepixel" src='./assets/settings/oldschooltext.png'></img>
+        </div>
 
 
-
-    <div class="login-container" id="login-container" style="display:none;">
-      <form class="login-form" action="http://18.223.125.204/fish/login.php/" method="post">
-        <label id="twitchtankname" for="username">Twitch Tank Username</label>
-        <input class="borderremoval" type="text" id="username" name="username">
-        <label id="password"for="password">Password</label>
-        <input class="borderremoval" type="password" id="password" name="password">
-        <button href="main.html">Login</button>
-      </form>
+        <div id="settingsbutton">
+          <img id="applybutton" src='./assets/settings/applybtn.png' onclick="playClickSound();  acceptAndApply()" onmouseover="playHoverSound()"></img>
+          <img id="applybuttononhover" src='./assets/settings/applybtnonhover.png' style="display:none"></img>
+          <img id="closebutton" src='./assets/settings/closebtnonhover.png' onclick="playClickSound();  closeSettings()" onmouseover="playHoverSound()"></img>
+          <img id="closebuttononhover" src='./assets/settings/closebtnonhover.png' style="display:none"></img>
+        </div>
     </div>
-
-    <div class="login-container" id="signup-container" style="display:none;">
-      <form class="login-form" action="http://18.223.125.204/fish/signup.php/" method="post">
-        <label class="borderremoval2" for="username">Email</label>
-        <input type="text" id="email" name="email">
-        <label class="borderremoval2" for="username">Username</label>
-        <input type="text" id="username" name="username">
-        <label class="borderremoval2" for="password" >Password</label>
-        <input type="password" id="password" name="password">
-        <button id="signup" type="submit">Signup</button>
-      </form>
-    </div>
-
-
   </body>
 </html>
