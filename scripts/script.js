@@ -287,7 +287,7 @@ let counter = 0;
     canvas.height = 2160;
 
     let enterfish = [];
-    let numFish = 1;
+    let numFish = 10;
     let allFish = [];
     let names = [];
 
@@ -380,6 +380,8 @@ let counter = 0;
       }
       else //for testing purposes
       {
+          //allFish.push(new Fish(canvas.width/2, canvas.height/2, 100, 100, .75, "fucker", "2"));
+
 
 
       }
